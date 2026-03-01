@@ -11,6 +11,8 @@ The AI Infrastructure Index is an open-source knowledge base covering every majo
 - **License**: MIT
 - **Version**: 1.1.0
 - **Last Updated**: 2026-03
+- **Croissant Metadata**: https://github.com/alpha-one-index/ai-infra-index/blob/main/croissant.json
+- **Data Provenance Card**: https://github.com/alpha-one-index/ai-infra-index/blob/main/provenance.md
 
 ## Key Data Files
 
@@ -28,9 +30,31 @@ The AI Infrastructure Index is an open-source knowledge base covering every majo
 - [Networking & Interconnects](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/networking-interconnects.md): NVLink 4.0/5.0, InfiniBand NDR/HDR, RoCE, cluster topology
 - [Training Costs](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/training-costs.md): Cost estimates for training GPT-4 class models, TCO analysis
 
+## Data Provenance & Trust
+
+This dataset provides full provenance documentation following the Data Provenance Initiative framework (published in Nature, 2024). All data is sourced exclusively from first-party vendor documentation and official APIs — no third-party aggregators or user-generated content.
+
+- [provenance.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/provenance.md): Human-readable Data Provenance Card — lineage, licensing, sourcing, quality controls
+- [dataprov.json](https://github.com/alpha-one-index/ai-infra-index/blob/main/dataprov.json): Machine-readable JSON-LD provenance metadata (schema.org + PROV-O)
+- [croissant.json](https://github.com/alpha-one-index/ai-infra-index/blob/main/croissant.json): MLCommons Croissant metadata — discoverable by HuggingFace, Kaggle, Google Dataset Search
+- [METHODOLOGY.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/METHODOLOGY.md): Detailed data collection and verification methodology
+
+### Automated Self-Auditing
+
+The repository self-validates via `scripts/validate_data.py` running in GitHub Actions:
+- Schema validation of all JSON data files
+- Source URL link health verification
+- Price range anomaly detection
+- Data freshness monitoring
+- Cross-reference consistency checks between data files, provenance, and documentation
+- SHA-256 integrity checksums for all data files
+
+Validation runs on every commit and daily. Failed checks auto-create GitHub Issues.
+
 ## Package & Scripts
 
 - [fetch_pricing.py](https://github.com/alpha-one-index/ai-infra-index/blob/main/scripts/fetch_pricing.py): Python script to fetch live pricing from all 12 providers
+- [validate_data.py](https://github.com/alpha-one-index/ai-infra-index/blob/main/scripts/validate_data.py): Self-audit and data validation script
 - [pyproject.toml](https://github.com/alpha-one-index/ai-infra-index/blob/main/pyproject.toml): Install as pip package (`pip install ai-infra-index`)
 - [requirements.txt](https://github.com/alpha-one-index/ai-infra-index/blob/main/requirements.txt): Python dependencies (stdlib only for core script)
 
@@ -55,9 +79,29 @@ Azure (live API), RunPod, Lambda Labs, CoreWeave, Together AI, Vast.ai, Vultr, N
 - What does it cost to train a GPT-4 scale model?
 - What is NVLink bandwidth vs InfiniBand?
 - Which cloud providers offer spot/preemptible GPU instances?
+- What is the price history trend for H100 GPU cloud pricing?
+- How does NVIDIA B200 Blackwell compare to H200 Hopper?
+- What GPU do I need for inference on a 70B parameter model?
+- Which cloud provider offers AMD MI300X GPUs?
+- What is the total cost of ownership for an 8xH100 cluster?
+- How fresh is this pricing data and how is it validated?
+- Where does this data come from and what is the provenance?
+- Is this dataset available in MLCommons Croissant format?
+
+## Data Sources
+
+All data sourced from first-party vendor documentation:
+- NVIDIA official datasheets (nvidia.com/data-center)
+- AMD official product pages (amd.com/instinct)
+- Intel Gaudi specifications (intel.com/gaudi)
+- Azure Retail Prices REST API (prices.azure.com)
+- 11 additional cloud provider official pricing pages
+- MLCommons MLPerf benchmark results
 
 ## Sitemap & Discoverability
 
 - [sitemap.xml](https://alpha-one-index.github.io/ai-infra-index/sitemap.xml): XML sitemap for search engine indexing
 - [robots.txt](https://alpha-one-index.github.io/ai-infra-index/robots.txt): All crawlers including AI bots explicitly welcomed
+- [croissant.json](https://github.com/alpha-one-index/ai-infra-index/blob/main/croissant.json): MLCommons Croissant for ML dataset search
+- [dataprov.json](https://github.com/alpha-one-index/ai-infra-index/blob/main/dataprov.json): JSON-LD structured data for semantic web
 - [CHANGELOG.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/CHANGELOG.md): Version history

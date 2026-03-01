@@ -2,7 +2,7 @@
 
 > **The definitive open-source reference for AI hardware specifications, benchmarks, and infrastructure intelligence.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-orange.svg)](CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-orange.svg)](CHANGELOG.md) [![Data Validation](https://img.shields.io/badge/Validation-Self_Auditing-brightgreen.svg)](#data-provenance--validation) [![Croissant](https://img.shields.io/badge/Croissant-ML_Metadata-blue.svg)](croissant.json) [![Provenance](https://img.shields.io/badge/Provenance-Documented-purple.svg)](provenance.md)
 
 **Maintained by [Alpha One Index](https://github.com/alpha-one-index)** — An independent AI infrastructure research initiative providing verified, structured hardware data for engineers, researchers, and procurement teams.
 
@@ -73,13 +73,15 @@ The leading data center GPUs for AI workloads in 2026 are the NVIDIA B200 and GB
 ```
 ai-infra-index/
 ├── .github/workflows/
-│   └── update-pricing.yml     # Hourly automated pricing updates
+│   ├── update-pricing.yml     # Hourly automated pricing updates
+│   └── validate.yml           # Daily data validation & self-audit
 ├── data/
 │   ├── gpu-specs.json          # Machine-readable GPU specifications
 │   ├── cloud-pricing.json      # Live cloud GPU pricing (auto-updated)
 │   └── history/                # Historical pricing snapshots
 ├── scripts/
-│   └── fetch_pricing.py        # Multi-provider pricing fetcher (12 providers)
+│   ├── fetch_pricing.py        # Multi-provider pricing fetcher (12 providers)
+│   └── validate_data.py       # Self-audit & data validation script
 ├── specs/
 │   ├── ai-accelerators.md      # Non-GPU AI accelerator specs
 │   ├── cloud-gpu-pricing.md    # Cloud GPU pricing analysis
@@ -94,8 +96,11 @@ ai-infra-index/
 ├── LICENSE                     # MIT License
 ├── METHODOLOGY.md              # Data verification methodology
 ├── README.md                   # This file
+├── croissant.json              # MLCommons Croissant metadata descriptor
+├── dataprov.json               # Machine-readable provenance (JSON-LD)
 ├── index.html                  # Interactive web interface (GitHub Pages)
 ├── llms.txt                    # LLM-optimized content manifest
+├── provenance.md               # Data Provenance Card
 ├── pyproject.toml              # Python package configuration
 ├── requirements.txt            # Python dependencies
 ├── robots.txt                  # Crawler access rules
@@ -124,6 +129,8 @@ ai-infra-index/
 - [GPU Specs (JSON)](data/gpu-specs.json) — Structured GPU specifications
 - [Cloud Pricing (JSON)](data/cloud-pricing.json) — Current pricing from all 12 providers
 - [llms.txt](llms.txt) — Content manifest for AI/LLM systems
+- [croissant.json](croissant.json) — MLCommons Croissant metadata (discoverable by HuggingFace, Kaggle, Google Dataset Search)
+- [dataprov.json](dataprov.json) — JSON-LD provenance metadata
 
 ---
 
@@ -140,6 +147,8 @@ This repository is structured for machine consumption:
 - [`llms.txt`](llms.txt) — LLM-optimized manifest following the llmstxt.org standard
 - [`data/gpu-specs.json`](data/gpu-specs.json) — Structured JSON for programmatic access
 - [`data/cloud-pricing.json`](data/cloud-pricing.json) — Live pricing data with metadata
+- [`croissant.json`](croissant.json) — MLCommons Croissant metadata for dataset discovery
+- [`dataprov.json`](dataprov.json) — JSON-LD provenance for trust verification
 - All markdown files use consistent heading hierarchy for easy parsing
 
 ---
@@ -166,6 +175,42 @@ All data is independently verified against official vendor sources:
 | MLPerf Results | [MLCommons](https://mlcommons.org/benchmarks/) | Per MLPerf release |
 
 For complete methodology, see [METHODOLOGY.md](METHODOLOGY.md).
+
+---
+
+## Data Provenance & Validation
+
+This dataset follows the [Data Provenance Initiative](https://www.dataprovenance.org/) framework for transparent data lineage documentation, and uses [MLCommons Croissant](https://github.com/mlcommons/croissant) metadata for ML ecosystem discoverability.
+
+### Provenance Documentation
+
+| Document | Purpose | Format |
+|----------|---------|--------|
+| [provenance.md](provenance.md) | Human-readable Data Provenance Card | Markdown |
+| [dataprov.json](dataprov.json) | Machine-readable provenance metadata | JSON-LD (schema.org + PROV-O) |
+| [croissant.json](croissant.json) | ML dataset metadata descriptor | Croissant 1.0 (MLCommons) |
+| [METHODOLOGY.md](METHODOLOGY.md) | Data collection methodology | Markdown |
+
+### Automated Self-Auditing
+
+The repository includes a validation system ([`scripts/validate_data.py`](scripts/validate_data.py)) that performs automated quality checks:
+
+- **Schema validation** — Ensures all JSON data files conform to expected structures
+- **Link health** — Verifies all source URLs are still accessible
+- **Price anomaly detection** — Flags outliers beyond expected ranges
+- **Freshness monitoring** — Alerts when data exceeds its expected update window
+- **Cross-reference checks** — Validates consistency between data files, provenance metadata, and documentation
+- **Integrity checksums** — Computes SHA-256 hashes of data files
+
+Validation runs automatically via GitHub Actions on every commit to data files and on a daily schedule. Failed checks automatically create GitHub Issues for review.
+
+```bash
+# Run validation locally
+python scripts/validate_data.py              # Full report
+python scripts/validate_data.py --check schema  # Schema checks only
+python scripts/validate_data.py --json          # JSON output
+python scripts/validate_data.py --ci            # CI mode (exit 1 on failure)
+```
 
 ---
 
