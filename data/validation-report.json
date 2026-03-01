@@ -1,0 +1,329 @@
+{
+  "validation_run": {
+    "timestamp": "2026-03-01T11:50:50.917443+00:00",
+    "duration_seconds": 0.00205,
+    "repository": "alpha-one-index/ai-infra-index",
+    "script_version": "1.0.0"
+  },
+  "summary": {
+    "total_checks": 39,
+    "passed": 38,
+    "failed": 1,
+    "warnings": 0,
+    "status": "FAIL"
+  },
+  "checks": [
+    {
+      "category": "schema",
+      "name": "File exists: data/gpu-specs.json",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.917478+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: data/cloud-pricing.json",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.917501+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: README.md",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917517+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: llms.txt",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917529+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: provenance.md",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917541+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: dataprov.json",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917556+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: croissant.json",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917569+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: METHODOLOGY.md",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917589+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: CHANGELOG.md",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917602+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: CITATION.cff",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917613+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "File exists: LICENSE",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917624+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "gpu-specs.json is valid JSON",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.917772+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "gpu-specs.json has required fields",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.917784+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "GPU model 'H100 SXM' is valid",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917787+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "GPU model 'H200 SXM' is valid",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917790+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "GPU model 'B200' is valid",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917792+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "GPU model 'A100 SXM 80GB' is valid",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917794+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "GPU model 'L40S' is valid",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917796+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "GPU model 'Instinct MI300X' is valid",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917798+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "GPU model 'Gaudi 3' is valid",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917802+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "cloud-pricing.json is valid JSON",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.917936+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "cloud-pricing.json has metadata",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.917941+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "cloud-pricing.json has provider entries",
+      "passed": true,
+      "message": "Found 1 top-level keys",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.917949+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "dataprov.json is valid JSON",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.918088+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "dataprov.json has JSON-LD @context",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.918092+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "dataprov.json has @type",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.918094+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "croissant.json is valid JSON",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.918194+00:00"
+    },
+    {
+      "category": "schema",
+      "name": "croissant.json conforms to Croissant spec",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.918200+00:00"
+    },
+    {
+      "category": "links",
+      "name": "Link health checks",
+      "passed": true,
+      "message": "Skipped (--skip-links)",
+      "severity": "info",
+      "timestamp": "2026-03-01T11:50:50.918219+00:00"
+    },
+    {
+      "category": "prices",
+      "name": "Price entries found",
+      "passed": false,
+      "message": "Could not extract any pricing entries",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.918406+00:00"
+    },
+    {
+      "category": "freshness",
+      "name": "Freshness: data/cloud-pricing.json",
+      "passed": true,
+      "message": "Last modified 0 days ago (max: 2)",
+      "severity": "info",
+      "timestamp": "2026-03-01T11:50:50.918442+00:00"
+    },
+    {
+      "category": "freshness",
+      "name": "Freshness: data/gpu-specs.json",
+      "passed": true,
+      "message": "Last modified 0 days ago (max: 90)",
+      "severity": "info",
+      "timestamp": "2026-03-01T11:50:50.918463+00:00"
+    },
+    {
+      "category": "cross-ref",
+      "name": "README lists 12 providers",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.918601+00:00"
+    },
+    {
+      "category": "cross-ref",
+      "name": "Version consistency (provenance.md \u2194 dataprov.json)",
+      "passed": true,
+      "message": "",
+      "severity": "error",
+      "timestamp": "2026-03-01T11:50:50.918884+00:00"
+    },
+    {
+      "category": "cross-ref",
+      "name": "Croissant references valid file: data/gpu-specs.json",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.918984+00:00"
+    },
+    {
+      "category": "cross-ref",
+      "name": "Croissant references valid file: data/cloud-pricing.json",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.919000+00:00"
+    },
+    {
+      "category": "cross-ref",
+      "name": "Croissant references valid file: README.md",
+      "passed": true,
+      "message": "",
+      "severity": "warning",
+      "timestamp": "2026-03-01T11:50:50.919013+00:00"
+    },
+    {
+      "category": "integrity",
+      "name": "SHA-256 for data/gpu-specs.json: 7e6c6e75fba08129...",
+      "passed": true,
+      "message": "",
+      "severity": "info",
+      "timestamp": "2026-03-01T11:50:50.919079+00:00"
+    },
+    {
+      "category": "integrity",
+      "name": "SHA-256 for data/cloud-pricing.json: 8dbaa1c02929e1b4...",
+      "passed": true,
+      "message": "",
+      "severity": "info",
+      "timestamp": "2026-03-01T11:50:50.919120+00:00"
+    }
+  ]
+}
