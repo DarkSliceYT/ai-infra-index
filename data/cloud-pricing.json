@@ -1,7 +1,7 @@
 {
   "metadata": {
     "description": "Live GPU cloud pricing - updated hourly via GitHub Actions",
-    "last_updated": "2026-03-01T06:14:04.403620+00:00",
+    "last_updated": "2026-03-01T06:17:46.383777+00:00",
     "update_frequency": "hourly",
     "sources_fetched": 3,
     "providers_with_live_data": [
@@ -12,7 +12,7 @@
   "providers": {
     "azure": {
       "name": "Microsoft Azure",
-      "last_api_fetch": "2026-03-01T06:14:04.403620+00:00",
+      "last_api_fetch": "2026-03-01T06:17:46.383777+00:00",
       "fetch_method": "azure_retail_prices_api",
       "instances": [
         {
