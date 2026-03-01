@@ -1,0 +1,86 @@
+name: Update GPU Pricing Data
+
+on:
+  schedule:
+    # Run every hour at minute 0
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+    inputs:
+      reason:
+        description: 'Reason for manual run'
+        required: false
+        default: 'Manual pricing refresh'
+
+permissions:
+  contents: write
+
+jobs:
+  update-pricing:
+    name: Fetch and Update GPU Cloud Pricing
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # No external dependencies needed - uses stdlib only
+          echo "Using Python stdlib only (urllib, json, pathlib)"
+
+      - name: Run pricing fetcher
+        id: fetch
+        run: |
+          echo "Starting pricing fetch at $(date -u)"
+          python scripts/fetch_pricing.py
+          echo "Pricing fetch complete"
+        env:
+          PYTHONUNBUFFERED: '1'
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet data/cloud-pricing.json || echo "changed=true" >> $GITHUB_OUTPUT
+          echo "Git status:"
+          git status --short data/
+
+      - name: Commit and push updated pricing
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/cloud-pricing.json
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+          git commit -m "chore: auto-update cloud pricing data [${TIMESTAMP}]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: No changes detected
+        if: steps.changes.outputs.changed != 'true'
+        run: echo "Pricing data unchanged - no commit needed"
+
+      - name: Update last-run badge data
+        run: |
+          echo '{"schemaVersion":1,"label":"pricing","message":"updated '$(date -u '+%Y-%m-%d %H:%M UTC')'","color":"brightgreen"}' > data/badge-pricing.json
+
+      - name: Commit badge update
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com" 2>/dev/null || true
+          git config --local user.name "github-actions[bot]" 2>/dev/null || true
+          git add data/badge-pricing.json || true
+          git diff --cached --quiet || git commit -m "chore: update pricing badge timestamp" || true
+          git push || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
