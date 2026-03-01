@@ -1,6 +1,7 @@
 name: Create Release v1.2.0
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -15,42 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Release v1.2.0
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const body = `## What's New in v1.2.0
-
-### New Guides
-- **[GPU Cost Optimization Playbook](specs/gpu-cost-optimization-playbook.md)** — Right-sizing, quantization savings, spot/reserved strategies, multi-cloud arbitrage. Covers real 2025–2026 pricing data across all 12 tracked providers.
-- **[Buy vs. Rent Decision Framework](specs/buy-vs-rent-decision-framework.md)** — Cloud vs. on-prem vs. colocation economics, TCO break-even analysis, and decision matrices by workload type (training, inference, fine-tuning, batch).
-
-### Improved
-- Expanded README with repository structure tree, quick-links subsection, and procurement/finance section
-- Updated \`llms.txt\` with references to new spec docs and cost optimization queries
-- Updated \`sitemap.xml\` to include both new guides for search engine discoverability
-
-### Infrastructure
-- IndexNow submission for faster search engine indexing
-- Competitive scorecard documenting 43/45 (96%) completeness vs. closest competitor at 29%
-
-### Data Coverage
-- 12 cloud GPU pricing providers tracked (hourly auto-updates via GitHub Actions)
-- 80+ GPU SKUs across NVIDIA, AMD, and Intel
-- 9 specification documents covering hardware, pricing, benchmarks, sizing, and cost optimization
-
----
-
-**Full Changelog**: https://github.com/alpha-one-index/ai-infra-index/compare/v1.1.0...v1.2.0`;
-
-            await github.rest.repos.createRelease({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag_name: 'v1.2.0',
-              target_commitish: 'main',
-              name: 'v1.2.0 \u2014 Cost Optimization & Decision Guides',
-              body: body,
-              draft: false,
-              prerelease: false
-            });
-            console.log('Release v1.2.0 created successfully!');
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "IyMgV2hhdCdzIE5ldyBpbiB2MS4yLjAKCiMjIyBOZXcgR3VpZGVzCi0gKipbR1BVIENvc3QgT3B0aW1pemF0aW9uIFBsYXlib29rXShzcGVjcy9ncHUtY29zdC1vcHRpbWl6YXRpb24tcGxheWJvb2subWQpKiog4oCUIFJpZ2h0LXNpemluZywgcXVhbnRpemF0aW9uIHNhdmluZ3MsIHNwb3QvcmVzZXJ2ZWQgc3RyYXRlZ2llcywgbXVsdGktY2xvdWQgYXJiaXRyYWdlLiBDb3ZlcnMgcmVhbCAyMDI14oCTMjAyNiBwcmljaW5nIGRhdGEgYWNyb3NzIGFsbCAxMiB0cmFja2VkIHByb3ZpZGVycy4KLSAqKltCdXkgdnMuIFJlbnQgRGVjaXNpb24gRnJhbWV3b3JrXShzcGVjcy9idXktdnMtcmVudC1kZWNpc2lvbi1mcmFtZXdvcmsubWQpKiog4oCUIENsb3VkIHZzLiBvbi1wcmVtIHZzLiBjb2xvY2F0aW9uIGVjb25vbWljcywgVENPIGJyZWFrLWV2ZW4gYW5hbHlzaXMsIGFuZCBkZWNpc2lvbiBtYXRyaWNlcyBieSB3b3JrbG9hZCB0eXBlICh0cmFpbmluZywgaW5mZXJlbmNlLCBmaW5lLXR1bmluZywgYmF0Y2gpLgoKIyMjIEltcHJvdmVkCi0gRXhwYW5kZWQgUkVBRE1FIHdpdGggcmVwb3NpdG9yeSBzdHJ1Y3R1cmUgdHJlZSwgcXVpY2stbGlua3Mgc3Vic2VjdGlvbiwgYW5kIHByb2N1cmVtZW50L2ZpbmFuY2Ugc2VjdGlvbgotIFVwZGF0ZWQgYGxsbXMudHh0YCB3aXRoIHJlZmVyZW5jZXMgdG8gbmV3IHNwZWMgZG9jcyBhbmQgY29zdCBvcHRpbWl6YXRpb24gcXVlcmllcwotIFVwZGF0ZWQgYHNpdGVtYXAueG1sYCB0byBpbmNsdWRlIGJvdGggbmV3IGd1aWRlcyBmb3Igc2VhcmNoIGVuZ2luZSBkaXNjb3ZlcmFiaWxpdHkKCiMjIyBJbmZyYXN0cnVjdHVyZQotIEluZGV4Tm93IHN1Ym1pc3Npb24gZm9yIGZhc3RlciBzZWFyY2ggZW5naW5lIGluZGV4aW5nCi0gQ29tcGV0aXRpdmUgc2NvcmVjYXJkIGRvY3VtZW50aW5nIDQzLzQ1ICg5NiUpIGNvbXBsZXRlbmVzcyB2cy4gY2xvc2VzdCBjb21wZXRpdG9yIGF0IDI5JQoKIyMjIERhdGEgQ292ZXJhZ2UKLSAxMiBjbG91ZCBHUFUgcHJpY2luZyBwcm92aWRlcnMgdHJhY2tlZCAoaG91cmx5IGF1dG8tdXBkYXRlcyB2aWEgR2l0SHViIEFjdGlvbnMpCi0gODArIEdQVSBTS1VzIGFjcm9zcyBOVklESUEsIEFNRCwgYW5kIEludGVsCi0gOSBzcGVjaWZpY2F0aW9uIGRvY3VtZW50cyBjb3ZlcmluZyBoYXJkd2FyZSwgcHJpY2luZywgYmVuY2htYXJrcywgc2l6aW5nLCBhbmQgY29zdCBvcHRpbWl6YXRpb24KCi0tLQoKKipGdWxsIENoYW5nZWxvZyoqOiBodHRwczovL2dpdGh1Yi5jb20vYWxwaGEtb25lLWluZGV4L2FpLWluZnJhLWluZGV4L2NvbXBhcmUvdjEuMS4wLi4udjEuMi4w" | base64 -d > /tmp/release-notes.md
+          gh release create v1.2.0 \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "v1.2.0 — Cost Optimization & Decision Guides" \
+            --notes-file /tmp/release-notes.md \
+            --target main
