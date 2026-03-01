@@ -3,10 +3,19 @@
     "title": "Cloud GPU Pricing Index",
     "description": "Real-time pricing data for GPU instances across major cloud providers",
     "version": "1.0.0",
-    "last_updated": "2026-02-28T21:00:00Z",
+    "last_updated": "2026-03-01T06:07:59Z",
     "update_frequency": "hourly",
     "currency": "USD",
-    "schema_version": "1.0"
+    "schema_version": "1.0",
+    "script_version": "1.1.0",
+    "sources": [
+      "Azure Retail Prices API",
+      "Lambda Labs API",
+      "AWS (manual)",
+      "GCP (manual)",
+      "CoreWeave (manual)",
+      "Together AI (manual)"
+    ]
   },
   "providers": [
     {
@@ -74,7 +83,7 @@
           "ram_gb": 1872,
           "on_demand_hourly": 98.45,
           "spot_hourly": 29.54,
-          "reserved_1yr_hourly": 62.10,
+          "reserved_1yr_hourly": 62.1,
           "reserved_3yr_hourly": 38.59,
           "region": "us-central1",
           "availability": "limited",
@@ -106,7 +115,7 @@
           "ram_gb": 384,
           "on_demand_hourly": 11.74,
           "spot_hourly": 3.52,
-          "reserved_1yr_hourly": 7.40,
+          "reserved_1yr_hourly": 7.4,
           "reserved_3yr_hourly": 4.59,
           "region": "us-central1",
           "availability": "available",
@@ -220,7 +229,7 @@
           "gpu_memory_gb": 640,
           "vcpus": null,
           "ram_gb": null,
-          "on_demand_hourly": 28.80,
+          "on_demand_hourly": 28.8,
           "spot_hourly": null,
           "reserved_1yr_hourly": null,
           "reserved_3yr_hourly": null,
@@ -235,20 +244,56 @@
   "price_history": {
     "description": "Historical average on-demand pricing for 8x GPU instances (per hour)",
     "h100_8x": [
-      {"date": "2024-01", "avg_price": 32.50},
-      {"date": "2024-06", "avg_price": 29.80},
-      {"date": "2025-01", "avg_price": 27.10},
-      {"date": "2025-06", "avg_price": 25.40},
-      {"date": "2026-01", "avg_price": 24.20},
-      {"date": "2026-02", "avg_price": 23.90}
+      {
+        "date": "2024-01",
+        "avg_price": 32.5
+      },
+      {
+        "date": "2024-06",
+        "avg_price": 29.8
+      },
+      {
+        "date": "2025-01",
+        "avg_price": 27.1
+      },
+      {
+        "date": "2025-06",
+        "avg_price": 25.4
+      },
+      {
+        "date": "2026-01",
+        "avg_price": 24.2
+      },
+      {
+        "date": "2026-02",
+        "avg_price": 23.9
+      }
     ],
     "a100_8x": [
-      {"date": "2024-01", "avg_price": 24.80},
-      {"date": "2024-06", "avg_price": 21.50},
-      {"date": "2025-01", "avg_price": 18.30},
-      {"date": "2025-06", "avg_price": 16.10},
-      {"date": "2026-01", "avg_price": 14.80},
-      {"date": "2026-02", "avg_price": 14.50}
+      {
+        "date": "2024-01",
+        "avg_price": 24.8
+      },
+      {
+        "date": "2024-06",
+        "avg_price": 21.5
+      },
+      {
+        "date": "2025-01",
+        "avg_price": 18.3
+      },
+      {
+        "date": "2025-06",
+        "avg_price": 16.1
+      },
+      {
+        "date": "2026-01",
+        "avg_price": 14.8
+      },
+      {
+        "date": "2026-02",
+        "avg_price": 14.5
+      }
     ]
   }
 }
