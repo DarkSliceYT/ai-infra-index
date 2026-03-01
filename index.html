@@ -3,86 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Infrastructure Index - Comprehensive AI Hardware Specifications & Benchmarks</title>
-  <meta name="description" content="Authoritative index of AI hardware specifications, GPU benchmarks, accelerator comparisons, and cloud pricing for NVIDIA, AMD, Intel, Google TPU, AWS Trainium, Cerebras, and Groq.">
-  <meta name="keywords" content="AI hardware, GPU specifications, NVIDIA H100, NVIDIA B200, AMD MI300X, Google TPU, AI accelerators, MLPerf benchmarks, AI cloud pricing">
+  <title>AI Infrastructure Index - GPU Specs, Benchmarks & Cloud Pricing</title>
+  <meta name="description" content="Authoritative index of AI hardware specifications, GPU benchmarks, accelerator comparisons, and live cloud pricing from Azure, RunPod, Lambda, CoreWeave, Together AI, and Vast.ai.">
+  <meta name="keywords" content="AI hardware, GPU specifications, NVIDIA H100, NVIDIA B200, AMD MI300X, Google TPU, cloud GPU pricing, AI accelerators, MLPerf benchmarks">
   <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Dataset",
     "name": "AI Infrastructure Index",
-    "description": "Comprehensive, verified dataset of AI hardware specifications, performance benchmarks, and cloud pricing across all major vendors including NVIDIA, AMD, Intel, Google, AWS, Microsoft, Cerebras, and Groq.",
+    "description": "Comprehensive, verified dataset of AI hardware specifications, performance benchmarks, and cloud pricing across all major vendors.",
     "url": "https://github.com/alpha-one-index/ai-infra-index",
     "license": "https://opensource.org/licenses/MIT",
-    "creator": {
-      "@type": "Organization",
-      "name": "Alpha One Index"
-    },
-    "dateModified": "2025-01-01",
-    "keywords": ["AI hardware", "GPU specifications", "NVIDIA H100", "NVIDIA B200", "AMD MI300X", "Google TPU v5p", "MLPerf", "AI accelerators", "HBM memory", "AI cloud pricing"],
-    "measurementTechnique": "Primary source verification with cross-reference validation",
-    "variableMeasured": [
-      {"@type": "PropertyValue", "name": "GPU Memory", "unitText": "GB"},
-      {"@type": "PropertyValue", "name": "Memory Bandwidth", "unitText": "TB/s"},
-      {"@type": "PropertyValue", "name": "FP16 Performance", "unitText": "TFLOPS"},
-      {"@type": "PropertyValue", "name": "TDP", "unitText": "Watts"},
-      {"@type": "PropertyValue", "name": "Interconnect Bandwidth", "unitText": "GB/s"}
-    ]
+    "creator": {"@type": "Organization", "name": "Alpha One Index"},
+    "dateModified": "2025-02-01",
+    "keywords": ["AI hardware", "GPU specifications", "NVIDIA H100", "NVIDIA B200", "AMD MI300X", "cloud GPU pricing", "MLPerf", "AI accelerators"]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What are the specifications of NVIDIA H100 SXM?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "NVIDIA H100 SXM features 80GB HBM3 memory, 3.35 TB/s memory bandwidth, 989 TFLOPS FP16 performance, 700W TDP, and NVLink 4.0 with 900 GB/s bidirectional bandwidth."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does NVIDIA B200 compare to H100?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "NVIDIA B200 features 192GB HBM3e memory (vs 80GB on H100), 8 TB/s memory bandwidth (vs 3.35 TB/s), and up to 2.25x higher FP16 performance with NVLink 5.0 interconnect."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is AMD MI300X memory capacity?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AMD Instinct MI300X features 192GB HBM3 memory with 5.3 TB/s memory bandwidth, making it competitive with NVIDIA offerings for large model inference workloads."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are Google TPU v5p specifications?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Google TPU v5p features 95GB HBM2e memory per chip, 2.76 TB/s memory bandwidth, and scales to 8,960 chips per pod with ICI interconnect for distributed training."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the best GPU for AI training in 2025?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "For AI training in 2025, NVIDIA B200 and H200 lead in single-GPU performance, while Google TPU v5p offers the largest scale-out capability. AMD MI300X provides a competitive alternative with 192GB memory capacity."
-        }
-      }
-    ]
-  }
-  </script>
+  <style>
+    :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    p.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .badge { display: inline-block; background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 0.2rem 0.8rem; font-size: 0.85rem; color: var(--green); margin-right: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: var(--card); border-radius: 8px; overflow: hidden; }
+    th { background: #1c2128; text-align: left; padding: 0.75rem; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; }
+    th:hover { color: var(--accent); }
+    td { padding: 0.6rem 0.75rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
+    tr:hover { background: #1c2128; }
+    .filter-bar { display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+    .filter-bar select, .filter-bar input { background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem; }
+    .price { font-weight: 600; color: var(--green); }
+    .spot { color: #d29922; }
+    .updated { color: var(--muted); font-size: 0.85rem; }
+    footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { table { font-size: 0.8rem; } td, th { padding: 0.4rem; } }
+  </style>
 </head>
 <body>
+<div class="container">
   <h1>AI Infrastructure Index</h1>
-  <p>Comprehensive, independently verified specifications and benchmarks for AI hardware, accelerators, and cloud infrastructure.</p>
+  <p class="subtitle">Comprehensive, independently verified specifications and benchmarks for AI hardware, accelerators, and cloud GPU pricing.</p>
+  <span class="badge">Updated hourly</span>
+  <span class="badge">6+ providers</span>
+  <span class="badge">MIT Licensed</span>
+
   <h2>GPU Specifications</h2>
   <table>
     <thead><tr><th>GPU</th><th>Memory</th><th>Bandwidth</th><th>FP16 TFLOPS</th><th>TDP</th><th>Interconnect</th></tr></thead>
@@ -96,6 +66,7 @@
       <tr><td>Intel Gaudi 3</td><td>128GB HBM2e</td><td>3.7 TB/s</td><td>1,835</td><td>900W</td><td>RoCE</td></tr>
     </tbody>
   </table>
+
   <h2>AI Accelerators</h2>
   <table>
     <thead><tr><th>Accelerator</th><th>Memory</th><th>Bandwidth</th><th>Architecture</th></tr></thead>
@@ -108,10 +79,62 @@
       <tr><td>Groq LPU</td><td>230MB SRAM</td><td>80 TB/s on-chip</td><td>TSP Architecture</td></tr>
     </tbody>
   </table>
+
+  <h2>Live Cloud GPU Pricing</h2>
+  <p class="updated" id="pricing-updated">Loading pricing data...</p>
+  <div class="filter-bar">
+    <select id="gpu-filter"><option value="">All GPUs</option></select>
+    <select id="provider-filter"><option value="">All Providers</option></select>
+    <label><input type="checkbox" id="spot-only"> Spot pricing only</label>
+  </div>
+  <table>
+    <thead><tr><th>Provider</th><th>GPU</th><th>Count</th><th>VRAM</th><th>On-Demand $/hr</th><th>Spot $/hr</th></tr></thead>
+    <tbody id="pricing-body"><tr><td colspan="6">Loading...</td></tr></tbody>
+  </table>
+
   <h2>Data Verification</h2>
-  <p>All specifications are verified against official vendor datasheets. Performance claims are cross-referenced against MLPerf published results. Updated monthly.</p>
+  <p>All specifications are verified against official vendor datasheets. Performance claims are cross-referenced with independent benchmarks. Cloud pricing is fetched live from provider APIs (Azure) and curated monthly from official pricing pages (RunPod, Lambda, CoreWeave, Together AI, Vast.ai). See <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/METHODOLOGY.md">METHODOLOGY.md</a> for details.</p>
+
   <footer>
     <p>&copy; 2025 Alpha One Index. Licensed under MIT. <a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a></p>
   </footer>
+</div>
+
+<script>
+(async function() {
+  const BASE = 'https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json';
+  try {
+    const resp = await fetch(BASE);
+    const data = await resp.json();
+    const meta = data.metadata;
+    document.getElementById('pricing-updated').textContent = 'Last updated: ' + meta.updated + ' | ' + meta.providers_count + ' providers, ' + meta.total_skus + ' SKUs';
+    const rows = [];
+    const gpuSet = new Set();
+    const provSet = new Set();
+    for (const [prov, skus] of Object.entries(data.providers)) {
+      provSet.add(prov);
+      for (const s of skus) {
+        gpuSet.add(s.gpu);
+        rows.push({prov, gpu: s.gpu, cnt: s.cnt || 1, mem: s.mem, od: s.on_demand, spot: s.spot || null});
+      }
+    }
+    // Populate filters
+    const gf = document.getElementById('gpu-filter');
+    [...gpuSet].sort().forEach(g => { const o = document.createElement('option'); o.value = g; o.textContent = g; gf.appendChild(o); });
+    const pf = document.getElementById('provider-filter');
+    [...provSet].sort().forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; pf.appendChild(o); });
+    function render() {
+      const gv = gf.value, pv = pf.value, so = document.getElementById('spot-only').checked;
+      const filtered = rows.filter(r => (!gv || r.gpu === gv) && (!pv || r.prov === pv) && (!so || r.spot !== null));
+      filtered.sort((a, b) => a.od - b.od);
+      const tbody = document.getElementById('pricing-body');
+      tbody.innerHTML = filtered.map(r => '<tr><td>' + r.prov + '</td><td>' + r.gpu + '</td><td>' + r.cnt + '</td><td>' + r.mem + 'GB</td><td class="price">$' + r.od.toFixed(2) + '</td><td class="spot">' + (r.spot ? '$' + r.spot.toFixed(2) : '-') + '</td></tr>').join('');
+      if (!filtered.length) tbody.innerHTML = '<tr><td colspan="6">No matching results</td></tr>';
+    }
+    gf.onchange = render; pf.onchange = render; document.getElementById('spot-only').onchange = render;
+    render();
+  } catch(e) { document.getElementById('pricing-body').innerHTML = '<tr><td colspan="6">Failed to load pricing data. <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/data/cloud-pricing.json">View raw data</a></td></tr>'; }
+})();
+</script>
 </body>
 </html>
