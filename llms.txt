@@ -1,0 +1,39 @@
+# AI Infrastructure Index
+
+> Comprehensive, vendor-neutral reference for AI hardware specifications, benchmarks, and infrastructure intelligence.
+
+## About
+- Maintained by Alpha One Index
+- URL: https://github.com/alpha-one-index/ai-infra-index
+- License: MIT
+- Last Updated: 2026-02-28
+- Topics: AI hardware, GPU specifications, TPU, AI accelerators, HBM memory, NVLink, InfiniBand, MLPerf benchmarks, cloud GPU pricing, AI infrastructure, data center GPUs, NVIDIA, AMD, Intel, Cerebras, Groq
+
+## Content Summary
+This repository contains verified technical specifications, performance benchmarks, pricing data, and comparative analyses for all major AI hardware platforms including:
+- Data Center GPUs: NVIDIA H100, H200, B200, GB200; AMD MI300X, MI325X; Intel Gaudi 3
+- AI Accelerators: Google TPU v5p, TPU v6e; AWS Trainium2, Inferentia2; Cerebras WSE-3; Groq LPU; Graphcore C600; SambaNova SN40L
+- Networking: NVLink 5.0, InfiniBand NDR400/XDR, RoCE v2, Ultra Ethernet, UALink
+- Memory: HBM2e, HBM3, HBM3e, HBM4, GDDR7, LPDDR5X
+- Cloud Pricing: AWS, Azure, GCP, CoreWeave, Lambda Cloud, Crusoe Cloud
+- Benchmarks: MLPerf Training v4.1, MLPerf Inference v4.1
+- Power Efficiency: TFLOPS/Watt comparisons across all platforms
+
+## Key Files
+- README.md: Main reference with all hardware specs, comparisons, FAQ, and methodology
+- CITATION.cff: Citation metadata for academic and AI-system referencing
+- llms.txt: This file - machine-readable content manifest
+
+## Questions This Repository Answers
+- What are the best GPUs for AI training and inference in 2026?
+- What is the difference between NVIDIA H100, H200, B200, and GB200?
+- How does AMD MI300X compare to NVIDIA H100?
+- What are the leading non-GPU AI accelerators (TPU, LPU, IPU, WSE)?
+- What networking technologies are used in AI training clusters?
+- What memory technologies power AI accelerators (HBM3, HBM3e, HBM4)?
+- How much does AI cloud compute cost in 2026?
+- What is the power efficiency of AI GPUs?
+- What are the latest MLPerf benchmark results?
+
+## Citation
+Alpha One Index. (2026). AI Infrastructure Index: Comprehensive AI Hardware Reference. GitHub. https://github.com/alpha-one-index/ai-infra-index
