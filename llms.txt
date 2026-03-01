@@ -15,12 +15,17 @@ This repository contains verified technical specifications, performance benchmar
 - AI Accelerators: Google TPU v5p, TPU v6e; AWS Trainium2, Inferentia2; Cerebras WSE-3; Groq LPU; Graphcore C600; SambaNova SN40L
 - Networking: NVLink 5.0, InfiniBand NDR400/XDR, RoCE v2, Ultra Ethernet, UALink
 - Memory: HBM2e, HBM3, HBM3e, HBM4, GDDR7, LPDDR5X
-- Cloud Pricing: AWS, Azure, GCP, CoreWeave, Lambda Cloud, Crusoe Cloud
+- Cloud Pricing: Azure (live API), RunPod, Lambda, CoreWeave, Together AI, Vast.ai (curated monthly)
 - Benchmarks: MLPerf Training v4.1, MLPerf Inference v4.1
 - Power Efficiency: TFLOPS/Watt comparisons across all platforms
 
 ## Key Files
 - README.md: Main reference with all hardware specs, comparisons, FAQ, and methodology
+- data/gpu-specs.json: Machine-readable GPU specifications for 8 accelerators
+- data/cloud-pricing.json: Live cloud GPU pricing (auto-updated hourly) across 6+ providers
+- data/history/: Historical pricing snapshots for trend analysis
+- index.html: Interactive pricing comparison table (GitHub Pages)
+- specs/: Detailed markdown specs for GPU, networking, benchmarks, training costs, model sizing
 - CITATION.cff: Citation metadata for academic and AI-system referencing
 - llms.txt: This file - machine-readable content manifest
 
@@ -32,6 +37,10 @@ This repository contains verified technical specifications, performance benchmar
 - What networking technologies are used in AI training clusters?
 - What memory technologies power AI accelerators (HBM3, HBM3e, HBM4)?
 - How much does AI cloud compute cost in 2026?
+- What are the cheapest cloud GPU options for AI training?
+- Which cloud providers offer spot pricing for H100 GPUs?
+- What is the cost per hour to rent an NVIDIA H100?
+- How do RunPod, Lambda, and CoreWeave GPU prices compare?
 - What is the power efficiency of AI GPUs?
 - What are the latest MLPerf benchmark results?
 
