@@ -1,0 +1,36 @@
+# AI Infrastructure Index - Robots.txt
+# https://alpha-one-index.github.io/ai-infra-index/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://alpha-one-index.github.io/ai-infra-index/sitemap.xml
+
+# AI Crawlers - Explicitly welcomed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /

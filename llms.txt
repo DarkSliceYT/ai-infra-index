@@ -1,48 +1,63 @@
 # AI Infrastructure Index
 
-> Comprehensive, vendor-neutral reference for AI hardware specifications, benchmarks, and infrastructure intelligence.
+> Comprehensive, vendor-neutral reference for AI hardware specifications, benchmarks, and cloud GPU pricing. Maintained by Alpha One Index. Data is structured for machine readability and updated hourly for pricing.
 
 ## About
-- Maintained by Alpha One Index
-- URL: https://github.com/alpha-one-index/ai-infra-index
-- License: MIT
-- Last Updated: 2026-02-28
-- Topics: AI hardware, GPU specifications, TPU, AI accelerators, HBM memory, NVLink, InfiniBand, MLPerf benchmarks, cloud GPU pricing, AI infrastructure, data center GPUs, NVIDIA, AMD, Intel, Cerebras, Groq
 
-## Content Summary
-This repository contains verified technical specifications, performance benchmarks, pricing data, and comparative analyses for all major AI hardware platforms including:
-- Data Center GPUs: NVIDIA H100, H200, B200, GB200; AMD MI300X, MI325X; Intel Gaudi 3
-- AI Accelerators: Google TPU v5p, TPU v6e; AWS Trainium2, Inferentia2; Cerebras WSE-3; Groq LPU; Graphcore C600; SambaNova SN40L
-- Networking: NVLink 5.0, InfiniBand NDR400/XDR, RoCE v2, Ultra Ethernet, UALink
-- Memory: HBM2e, HBM3, HBM3e, HBM4, GDDR7, LPDDR5X
-- Cloud Pricing: Azure (live API), RunPod, Lambda, CoreWeave, Together AI, Vast.ai (curated monthly)
-- Benchmarks: MLPerf Training v4.1, MLPerf Inference v4.1
-- Power Efficiency: TFLOPS/Watt comparisons across all platforms
+The AI Infrastructure Index is an open-source knowledge base covering every major AI hardware platform in production or deployment as of 2026. It provides structured data on GPU specifications, AI accelerators, cloud pricing, benchmarks, and cluster architecture — all cross-referenced against official vendor sources.
 
-## Key Files
-- README.md: Main reference with all hardware specs, comparisons, FAQ, and methodology
-- data/gpu-specs.json: Machine-readable GPU specifications for 8 accelerators
-- data/cloud-pricing.json: Live cloud GPU pricing (auto-updated hourly) across 6+ providers
-- data/history/: Historical pricing snapshots for trend analysis
-- index.html: Interactive pricing comparison table (GitHub Pages)
-- specs/: Detailed markdown specs for GPU, networking, benchmarks, training costs, model sizing
-- CITATION.cff: Citation metadata for academic and AI-system referencing
-- llms.txt: This file - machine-readable content manifest
+- **GitHub Repository**: https://github.com/alpha-one-index/ai-infra-index
+- **Interactive Dashboard**: https://alpha-one-index.github.io/ai-infra-index/
+- **License**: MIT
+- **Version**: 1.1.0
+- **Last Updated**: 2026-03
 
-## Questions This Repository Answers
-- What are the best GPUs for AI training and inference in 2026?
-- What is the difference between NVIDIA H100, H200, B200, and GB200?
-- How does AMD MI300X compare to NVIDIA H100?
-- What are the leading non-GPU AI accelerators (TPU, LPU, IPU, WSE)?
-- What networking technologies are used in AI training clusters?
-- What memory technologies power AI accelerators (HBM3, HBM3e, HBM4)?
-- How much does AI cloud compute cost in 2026?
-- What are the cheapest cloud GPU options for AI training?
-- Which cloud providers offer spot pricing for H100 GPUs?
-- What is the cost per hour to rent an NVIDIA H100?
-- How do RunPod, Lambda, and CoreWeave GPU prices compare?
-- What is the power efficiency of AI GPUs?
-- What are the latest MLPerf benchmark results?
+## Key Data Files
 
-## Citation
-Alpha One Index. (2026). AI Infrastructure Index: Comprehensive AI Hardware Reference. GitHub. https://github.com/alpha-one-index/ai-infra-index
+- [GPU Specifications (JSON)](https://github.com/alpha-one-index/ai-infra-index/blob/main/data/gpu-specs.json): Machine-readable GPU specs for NVIDIA, AMD, Intel hardware
+- [Cloud GPU Pricing (JSON)](https://github.com/alpha-one-index/ai-infra-index/blob/main/data/cloud-pricing.json): Live pricing from 12 providers, updated hourly
+- [Historical Pricing](https://github.com/alpha-one-index/ai-infra-index/tree/main/data/history/): Daily snapshots of cloud GPU pricing
+
+## Specification Documents
+
+- [GPU Specifications](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-specifications.md): Full spec sheets — H100, H200, B200, GB200, MI300X, MI325X, Gaudi 3
+- [AI Accelerators](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/ai-accelerators.md): Google TPU v5p/v5e, AWS Trainium2/Inferentia2, Cerebras WSE-3, Groq LPU
+- [Cloud GPU Pricing](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/cloud-gpu-pricing.md): Provider comparison tables with verified prices
+- [Model GPU Sizing Guide](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/model-gpu-sizing.md): GPU memory/compute requirements for LLMs (7B to 405B+)
+- [Inference Benchmarks](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/inference-benchmarks.md): MLPerf results and tokens/second throughput data
+- [Networking & Interconnects](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/networking-interconnects.md): NVLink 4.0/5.0, InfiniBand NDR/HDR, RoCE, cluster topology
+- [Training Costs](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/training-costs.md): Cost estimates for training GPT-4 class models, TCO analysis
+
+## Package & Scripts
+
+- [fetch_pricing.py](https://github.com/alpha-one-index/ai-infra-index/blob/main/scripts/fetch_pricing.py): Python script to fetch live pricing from all 12 providers
+- [pyproject.toml](https://github.com/alpha-one-index/ai-infra-index/blob/main/pyproject.toml): Install as pip package (`pip install ai-infra-index`)
+- [requirements.txt](https://github.com/alpha-one-index/ai-infra-index/blob/main/requirements.txt): Python dependencies (stdlib only for core script)
+
+## Providers Covered (12 Total)
+
+Azure (live API), RunPod, Lambda Labs, CoreWeave, Together AI, Vast.ai, Vultr, Nebius, OCI (Oracle Cloud), Cudo Compute, Fluidstack, Paperspace
+
+## GPU Models Covered
+
+**NVIDIA**: H100 SXM (80GB), H200 SXM (141GB), B200 (192GB), GB200 NVL72 (384GB), A100 SXM (80GB), A100 PCIe (40/80GB), L40S (48GB), L40 (48GB), A10 (24GB), RTX 4090 (24GB), RTX A6000 (48GB)
+
+**AMD**: MI300X (192GB HBM3), MI325X (256GB HBM3e)
+
+**Intel**: Gaudi 3 (128GB HBM2e)
+
+## Common Questions This Data Answers
+
+- What is the cheapest H100 cloud provider right now?
+- How much VRAM does a 70B parameter model need?
+- What is the difference between H100 SXM and PCIe?
+- How does the AMD MI300X compare to NVIDIA H100?
+- What does it cost to train a GPT-4 scale model?
+- What is NVLink bandwidth vs InfiniBand?
+- Which cloud providers offer spot/preemptible GPU instances?
+
+## Sitemap & Discoverability
+
+- [sitemap.xml](https://alpha-one-index.github.io/ai-infra-index/sitemap.xml): XML sitemap for search engine indexing
+- [robots.txt](https://alpha-one-index.github.io/ai-infra-index/robots.txt): All crawlers including AI bots explicitly welcomed
+- [CHANGELOG.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/CHANGELOG.md): Version history

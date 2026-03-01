@@ -3,138 +3,356 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Infrastructure Index - GPU Specs, Benchmarks & Cloud Pricing</title>
-  <meta name="description" content="Authoritative index of AI hardware specifications, GPU benchmarks, accelerator comparisons, and live cloud pricing from Azure, RunPod, Lambda, CoreWeave, Together AI, and Vast.ai.">
-  <meta name="keywords" content="AI hardware, GPU specifications, NVIDIA H100, NVIDIA B200, AMD MI300X, Google TPU, cloud GPU pricing, AI accelerators, MLPerf benchmarks">
+  <title>AI Infrastructure Index — GPU Specs, Benchmarks & Cloud Pricing</title>
+  <meta name="description" content="The definitive open-source reference for AI hardware specifications, benchmarks, and cloud GPU pricing. Compare H100, H200, B200, MI300X across 12 cloud providers including Azure, RunPod, Lambda, CoreWeave, and more.">
+  <meta name="keywords" content="GPU pricing, H100, H200, B200, MI300X, AI infrastructure, cloud GPU, NVIDIA, AMD, machine learning hardware, AI accelerators, MLPerf benchmarks">
+  <meta name="author" content="Alpha One Index">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Infrastructure Index — GPU Specs & Cloud Pricing">
+  <meta property="og:description" content="Open-source AI hardware specifications, benchmarks, and cloud GPU pricing from 12 providers. Updated hourly.">
+  <meta property="og:url" content="https://alpha-one-index.github.io/ai-infra-index/">
+  <meta property="og:type" content="website">
+
+  <!-- Schema.org structured data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Dataset",
-    "name": "AI Infrastructure Index",
-    "description": "Comprehensive, verified dataset of AI hardware specifications, performance benchmarks, and cloud pricing across all major vendors.",
-    "url": "https://github.com/alpha-one-index/ai-infra-index",
-    "license": "https://opensource.org/licenses/MIT",
-    "creator": {"@type": "Organization", "name": "Alpha One Index"},
-    "dateModified": "2025-02-01",
-    "keywords": ["AI hardware", "GPU specifications", "NVIDIA H100", "NVIDIA B200", "AMD MI300X", "cloud GPU pricing", "MLPerf", "AI accelerators"]
-  }
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "AI Infrastructure Index",
+      "description": "Comprehensive open-source dataset covering AI hardware specifications, cloud GPU pricing from 12 providers, MLPerf benchmarks, and infrastructure intelligence. Updated hourly for pricing data.",
+      "url": "https://alpha-one-index.github.io/ai-infra-index/",
+      "identifier": "https://github.com/alpha-one-index/ai-infra-index",
+      "keywords": ["GPU", "AI hardware", "cloud pricing", "H100", "H200", "B200", "MI300X", "MLPerf", "NVIDIA", "AMD", "Intel Gaudi", "machine learning infrastructure"],
+      "license": "https://opensource.org/licenses/MIT",
+      "creator": {
+        "@type": "Organization",
+        "name": "Alpha One Index",
+        "url": "https://github.com/alpha-one-index"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json",
+          "name": "GPU Specifications JSON"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json",
+          "name": "Cloud GPU Pricing JSON"
+        }
+      ],
+      "temporalCoverage": "2026/..",
+      "spatialCoverage": "Global",
+      "measurementTechnique": "Automated API collection (Azure) and manual verification from official pricing pages (all other providers)",
+      "variableMeasured": ["GPU price per hour", "GPU memory capacity", "GPU compute FLOPS", "Memory bandwidth", "Power consumption", "MLPerf inference score"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the cheapest cloud provider for H100 GPUs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As of early 2026, the most competitive H100 SXM pricing comes from Nebius ($2.00/hr), Fluidstack ($2.21/hr), and CoreWeave ($2.23/hr). Azure, RunPod, Lambda, Together AI, Cudo Compute, and Vast.ai are all in the $2.45-$2.50/hr range. OCI is the most expensive at $4.10/hr. All prices are per GPU-hour for on-demand instances."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much VRAM do I need for a 70B parameter LLM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 70B parameter model in FP16 requires approximately 140GB of VRAM (2 bytes × 70B parameters). For inference, you need at least 2x H100 SXM (160GB total) or a single AMD MI325X (256GB). For training with optimizer states and gradients, you need 4-8x H100s or equivalent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between H100 SXM and H100 PCIe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The H100 SXM uses the SXM5 form factor with NVLink 4.0 interconnect providing 900 GB/s bandwidth between GPUs. The H100 PCIe uses standard PCIe 5.0 (128 GB/s) and has lower memory bandwidth (2 TB/s vs 3.35 TB/s for SXM). SXM is significantly faster for multi-GPU training but costs more. Both have 80GB HBM3 in the standard configuration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does AMD MI300X compare to NVIDIA H100?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The AMD MI300X has 192GB HBM3 (vs 80GB for H100 SXM), making it significantly better for memory-bound workloads like large LLM inference. The H100 has higher compute density (1,979 FP16 TFLOPS vs 1,307 for MI300X) and better software ecosystem (CUDA). MI300X is typically 20-30% cheaper per GPU-hour than H100 SXM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What cloud providers offer spot or preemptible GPU instances?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RunPod offers spot pricing at significant discounts (H100 at $1.89/hr vs $2.49/hr on-demand). Vast.ai is a marketplace with both on-demand and spot-equivalent pricing. Azure offers Spot VMs for GPU instances. Lambda Labs, CoreWeave, and most other providers offer on-demand only."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is NVLink and why does it matter for AI training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NVLink is NVIDIA's proprietary GPU interconnect. NVLink 4.0 (H100) provides 900 GB/s bidirectional bandwidth between GPUs, vs 128 GB/s for PCIe 5.0. NVLink 5.0 (B200/GB200) doubles this to 1.8 TB/s. High interconnect bandwidth is critical for model parallelism in large model training — it allows tensors to be split across GPUs without creating bottlenecks."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "name": "AI Infrastructure Index",
+      "description": "Open-source repository of AI hardware specifications and cloud GPU pricing data",
+      "url": "https://github.com/alpha-one-index/ai-infra-index",
+      "codeRepository": "https://github.com/alpha-one-index/ai-infra-index",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/licenses/MIT",
+      "version": "1.1.0"
+    }
+  ]
   </script>
+
   <style>
-    :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-    p.subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
-    .badge { display: inline-block; background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 0.2rem 0.8rem; font-size: 0.85rem; color: var(--green); margin-right: 0.5rem; }
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: var(--card); border-radius: 8px; overflow: hidden; }
-    th { background: #1c2128; text-align: left; padding: 0.75rem; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; }
-    th:hover { color: var(--accent); }
-    td { padding: 0.6rem 0.75rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
-    tr:hover { background: #1c2128; }
-    .filter-bar { display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
-    .filter-bar select, .filter-bar input { background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem; }
-    .price { font-weight: 600; color: var(--green); }
-    .spot { color: #d29922; }
-    .updated { color: var(--muted); font-size: 0.85rem; }
-    footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    @media (max-width: 768px) { table { font-size: 0.8rem; } td, th { padding: 0.4rem; } }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+    header { background: #161b22; border-bottom: 1px solid #30363d; padding: 20px; text-align: center; }
+    header h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 8px; }
+    header p { color: #8b949e; font-size: 0.95rem; }
+    .badges { margin: 12px 0; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .badge { background: #21262d; border: 1px solid #30363d; border-radius: 4px; padding: 3px 10px; font-size: 0.78rem; color: #58a6ff; }
+    nav { background: #161b22; border-bottom: 1px solid #30363d; padding: 10px 20px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    nav a { color: #58a6ff; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { text-decoration: underline; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    section { margin-bottom: 40px; }
+    h2 { color: #58a6ff; font-size: 1.3rem; margin-bottom: 16px; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
+    h3 { color: #79c0ff; font-size: 1.05rem; margin: 20px 0 10px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    th { background: #161b22; color: #8b949e; text-align: left; padding: 10px 12px; border-bottom: 2px solid #30363d; white-space: nowrap; }
+    td { padding: 8px 12px; border-bottom: 1px solid #21262d; }
+    tr:hover td { background: #161b22; }
+    .provider-badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 0.78rem; font-weight: 600; }
+    .live { background: #1a4731; color: #3fb950; }
+    .manual { background: #1c2128; color: #8b949e; }
+    .price { font-weight: 600; color: #3fb950; }
+    .price-high { color: #f85149; }
+    .price-mid { color: #d29922; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 16px 0; }
+    .info-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
+    .info-card h4 { color: #8b949e; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; }
+    .info-card .value { color: #58a6ff; font-size: 1.5rem; font-weight: 700; }
+    .info-card .sub { color: #8b949e; font-size: 0.8rem; }
+    .data-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+    .data-link { background: #21262d; border: 1px solid #30363d; border-radius: 6px; padding: 8px 16px; color: #58a6ff; text-decoration: none; font-size: 0.875rem; }
+    .data-link:hover { background: #30363d; }
+    footer { background: #161b22; border-top: 1px solid #30363d; padding: 20px; text-align: center; color: #8b949e; font-size: 0.85rem; margin-top: 40px; }
+    footer a { color: #58a6ff; text-decoration: none; }
+    #last-updated { color: #3fb950; font-size: 0.8rem; }
   </style>
 </head>
 <body>
-<div class="container">
+
+<header>
   <h1>AI Infrastructure Index</h1>
-  <p class="subtitle">Comprehensive, independently verified specifications and benchmarks for AI hardware, accelerators, and cloud GPU pricing.</p>
-  <span class="badge">Updated hourly</span>
-  <span class="badge">6+ providers</span>
-  <span class="badge">MIT Licensed</span>
-
-  <h2>GPU Specifications</h2>
-  <table>
-    <thead><tr><th>GPU</th><th>Memory</th><th>Bandwidth</th><th>FP16 TFLOPS</th><th>TDP</th><th>Interconnect</th></tr></thead>
-    <tbody>
-      <tr><td>NVIDIA H100 SXM</td><td>80GB HBM3</td><td>3.35 TB/s</td><td>989</td><td>700W</td><td>NVLink 4.0</td></tr>
-      <tr><td>NVIDIA H200 SXM</td><td>141GB HBM3e</td><td>4.8 TB/s</td><td>989</td><td>700W</td><td>NVLink 4.0</td></tr>
-      <tr><td>NVIDIA B200 SXM</td><td>192GB HBM3e</td><td>8 TB/s</td><td>2,250</td><td>1000W</td><td>NVLink 5.0</td></tr>
-      <tr><td>NVIDIA A100 SXM</td><td>80GB HBM2e</td><td>2.0 TB/s</td><td>312</td><td>400W</td><td>NVLink 3.0</td></tr>
-      <tr><td>AMD MI300X</td><td>192GB HBM3</td><td>5.3 TB/s</td><td>1,307</td><td>750W</td><td>Infinity Fabric</td></tr>
-      <tr><td>AMD MI250X</td><td>128GB HBM2e</td><td>3.2 TB/s</td><td>383</td><td>560W</td><td>Infinity Fabric</td></tr>
-      <tr><td>Intel Gaudi 3</td><td>128GB HBM2e</td><td>3.7 TB/s</td><td>1,835</td><td>900W</td><td>RoCE</td></tr>
-    </tbody>
-  </table>
-
-  <h2>AI Accelerators</h2>
-  <table>
-    <thead><tr><th>Accelerator</th><th>Memory</th><th>Bandwidth</th><th>Architecture</th></tr></thead>
-    <tbody>
-      <tr><td>Google TPU v5p</td><td>95GB HBM2e</td><td>2.76 TB/s</td><td>SparseCore + MXU</td></tr>
-      <tr><td>Google TPU v5e</td><td>16GB HBM2e</td><td>819 GB/s</td><td>MXU</td></tr>
-      <tr><td>AWS Trainium2</td><td>96GB HBM</td><td>2.4 TB/s</td><td>NeuronCore-v3</td></tr>
-      <tr><td>AWS Inferentia2</td><td>32GB HBM</td><td>2.4 TB/s</td><td>NeuronCore-v2</td></tr>
-      <tr><td>Cerebras WSE-3</td><td>44GB SRAM</td><td>21 PB/s on-chip</td><td>Wafer-Scale Engine</td></tr>
-      <tr><td>Groq LPU</td><td>230MB SRAM</td><td>80 TB/s on-chip</td><td>TSP Architecture</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Live Cloud GPU Pricing</h2>
-  <p class="updated" id="pricing-updated">Loading pricing data...</p>
-  <div class="filter-bar">
-    <select id="gpu-filter"><option value="">All GPUs</option></select>
-    <select id="provider-filter"><option value="">All Providers</option></select>
-    <label><input type="checkbox" id="spot-only"> Spot pricing only</label>
+  <p>The definitive open-source reference for AI hardware specs, benchmarks, and cloud GPU pricing</p>
+  <div class="badges">
+    <span class="badge">MIT License</span>
+    <span class="badge">12 Providers</span>
+    <span class="badge">80+ SKUs</span>
+    <span class="badge">Hourly Updates</span>
+    <span class="badge">v1.1.0</span>
   </div>
-  <table>
-    <thead><tr><th>Provider</th><th>GPU</th><th>Count</th><th>VRAM</th><th>On-Demand $/hr</th><th>Spot $/hr</th></tr></thead>
-    <tbody id="pricing-body"><tr><td colspan="6">Loading...</td></tr></tbody>
-  </table>
+  <div id="last-updated">Loading pricing data...</div>
+</header>
 
-  <h2>Data Verification</h2>
-  <p>All specifications are verified against official vendor datasheets. Performance claims are cross-referenced with independent benchmarks. Cloud pricing is fetched live from provider APIs (Azure) and curated monthly from official pricing pages (RunPod, Lambda, CoreWeave, Together AI, Vast.ai). See <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/METHODOLOGY.md">METHODOLOGY.md</a> for details.</p>
+<nav>
+  <a href="https://github.com/alpha-one-index/ai-infra-index">GitHub</a>
+  <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-specifications.md">GPU Specs</a>
+  <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/cloud-gpu-pricing.md">Pricing</a>
+  <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/ai-accelerators.md">Accelerators</a>
+  <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/inference-benchmarks.md">Benchmarks</a>
+  <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/model-gpu-sizing.md">Sizing Guide</a>
+  <a href="https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json">JSON API</a>
+</nav>
 
-  <footer>
-    <p>&copy; 2025 Alpha One Index. Licensed under MIT. <a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a></p>
-  </footer>
+<div class="container">
+
+  <section>
+    <h2>Live Cloud GPU Pricing</h2>
+    <p style="color: #8b949e; margin-bottom: 12px; font-size: 0.875rem;">Prices in USD per GPU-hour. Azure updated hourly via API; others verified monthly from official pricing pages.</p>
+    <div class="data-links">
+      <a href="https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json" class="data-link">Download JSON</a>
+      <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/cloud-gpu-pricing.md" class="data-link">Full Analysis</a>
+    </div>
+    <br>
+    <div class="table-wrap">
+      <table id="pricing-table">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>GPU</th>
+            <th>VRAM</th>
+            <th>On-Demand ($/hr)</th>
+            <th>Spot ($/hr)</th>
+            <th>Data Source</th>
+          </tr>
+        </thead>
+        <tbody id="pricing-tbody">
+          <tr><td colspan="6" style="color:#8b949e; padding: 20px;">Loading pricing data from GitHub...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>GPU Specifications</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>GPU</th>
+            <th>Arch</th>
+            <th>VRAM</th>
+            <th>Mem BW</th>
+            <th>FP16 TFLOPS</th>
+            <th>FP8 TFLOPS</th>
+            <th>TDP</th>
+            <th>Interconnect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>H100 SXM</strong></td><td>Hopper</td><td>80 GB HBM3</td><td>3.35 TB/s</td><td>1,979</td><td>3,958</td><td>700W</td><td>NVLink 4.0 (900 GB/s)</td></tr>
+          <tr><td><strong>H200 SXM</strong></td><td>Hopper</td><td>141 GB HBM3e</td><td>4.8 TB/s</td><td>1,979</td><td>3,958</td><td>700W</td><td>NVLink 4.0 (900 GB/s)</td></tr>
+          <tr><td><strong>B200</strong></td><td>Blackwell</td><td>192 GB HBM3e</td><td>8.0 TB/s</td><td>4,500</td><td>9,000</td><td>1,000W</td><td>NVLink 5.0 (1.8 TB/s)</td></tr>
+          <tr><td><strong>GB200 NVL72</strong></td><td>Blackwell</td><td>384 GB HBM3e</td><td>16.0 TB/s</td><td>9,000</td><td>18,000</td><td>2,700W</td><td>NVLink 5.0 (1.8 TB/s)</td></tr>
+          <tr><td><strong>MI300X</strong></td><td>CDNA 3</td><td>192 GB HBM3</td><td>5.3 TB/s</td><td>1,307</td><td>2,614</td><td>750W</td><td>Infinity Fabric (896 GB/s)</td></tr>
+          <tr><td><strong>MI325X</strong></td><td>CDNA 3+</td><td>256 GB HBM3e</td><td>6.0 TB/s</td><td>1,307</td><td>2,614</td><td>750W</td><td>Infinity Fabric (896 GB/s)</td></tr>
+          <tr><td><strong>Gaudi 3</strong></td><td>Custom ASIC</td><td>128 GB HBM2e</td><td>3.7 TB/s</td><td>1,835</td><td>3,670</td><td>600W</td><td>RoCE v2 (400 Gb/s)</td></tr>
+          <tr><td><strong>A100 SXM</strong></td><td>Ampere</td><td>80 GB HBM2e</td><td>2.0 TB/s</td><td>312</td><td>—</td><td>400W</td><td>NVLink 3.0 (600 GB/s)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="data-links" style="margin-top: 12px;">
+      <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-specifications.md" class="data-link">Full GPU Specs</a>
+      <a href="https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json" class="data-link">Download JSON</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Index Overview</h2>
+    <div class="info-grid">
+      <div class="info-card"><h4>Cloud Providers</h4><div class="value">12</div><div class="sub">Azure, RunPod, Lambda, CoreWeave, Together AI, Vast.ai, Vultr, Nebius, OCI, Cudo, Fluidstack, Paperspace</div></div>
+      <div class="info-card"><h4>GPU SKUs Tracked</h4><div class="value">80+</div><div class="sub">H100, H200, B200, GB200, A100, MI300X, MI325X, Gaudi 3, L40S, A10, RTX 4090 and more</div></div>
+      <div class="info-card"><h4>Price Update Frequency</h4><div class="value">Hourly</div><div class="sub">Azure via live API; 11 others verified monthly</div></div>
+      <div class="info-card"><h4>Data Format</h4><div class="value">JSON + MD</div><div class="sub">Machine-readable JSON + human-readable Markdown</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Quick Reference: H100 SXM Pricing by Provider</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Provider</th><th>On-Demand ($/hr)</th><th>Spot ($/hr)</th><th>Data Type</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nebius</td><td class="price">$2.00</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>Fluidstack</td><td class="price">$2.21</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>CoreWeave</td><td class="price">$2.23</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>Vast.ai</td><td class="price">$2.45</td><td>$1.80</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>RunPod</td><td class="price">$2.49</td><td>$1.89</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>Together AI</td><td class="price">$2.50</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>Cudo Compute</td><td class="price">$2.50</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>Azure</td><td class="price">~$2.90</td><td>—</td><td><span class="provider-badge live">Live API</span></td></tr>
+          <tr><td>Lambda Labs</td><td class="price">$2.98</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>Vultr</td><td class="price price-mid">$2.99</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>Paperspace</td><td class="price price-mid">$3.09</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+          <tr><td>OCI</td><td class="price price-high">$4.10</td><td>—</td><td><span class="provider-badge manual">Monthly</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
 </div>
 
+<footer>
+  <p>MIT License · <a href="https://github.com/alpha-one-index/ai-infra-index">GitHub</a> · <a href="llms.txt">llms.txt</a> · <a href="sitemap.xml">Sitemap</a> · <a href="robots.txt">robots.txt</a> · Maintained by <a href="https://github.com/alpha-one-index">Alpha One Index</a></p>
+  <p style="margin-top: 8px;">Prices for informational purposes. Always verify with providers before purchasing.</p>
+</footer>
+
 <script>
-(async function() {
-  const BASE = 'https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json';
-  try {
-    const resp = await fetch(BASE);
-    const data = await resp.json();
-    const meta = data.metadata;
-    document.getElementById('pricing-updated').textContent = 'Last updated: ' + meta.updated + ' | ' + meta.providers_count + ' providers, ' + meta.total_skus + ' SKUs';
-    const rows = [];
-    const gpuSet = new Set();
-    const provSet = new Set();
-    for (const [prov, skus] of Object.entries(data.providers)) {
-      provSet.add(prov);
-      for (const s of skus) {
-        gpuSet.add(s.gpu);
-        rows.push({prov, gpu: s.gpu, cnt: s.cnt || 1, mem: s.mem, od: s.on_demand, spot: s.spot || null});
+(function() {
+  const PRICING_URL = 'https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json';
+  const PROVIDER_URLS = {
+    'Azure': 'https://azure.microsoft.com/pricing/',
+    'RunPod': 'https://www.runpod.io/pricing',
+    'Lambda': 'https://lambdalabs.com/service/gpu-cloud#pricing',
+    'CoreWeave': 'https://www.coreweave.com/pricing',
+    'Together AI': 'https://www.together.ai/pricing',
+    'Vast.ai': 'https://vast.ai/pricing',
+    'Vultr': 'https://www.vultr.com/pricing/#cloud-gpu',
+    'Nebius': 'https://nebius.com/pricing',
+    'OCI': 'https://www.oracle.com/cloud/price-list/',
+    'Cudo Compute': 'https://www.cudocompute.com/pricing',
+    'Fluidstack': 'https://www.fluidstack.io/pricing',
+    'Paperspace': 'https://www.paperspace.com/pricing'
+  };
+
+  function priceClass(p) {
+    if (p <= 2.30) return 'price';
+    if (p <= 2.99) return 'price price-mid';
+    return 'price price-high';
+  }
+
+  fetch(PRICING_URL)
+    .then(r => r.json())
+    .then(data => {
+      const tbody = document.getElementById('pricing-tbody');
+      const updated = document.getElementById('last-updated');
+      if (data.metadata && data.metadata.updated) {
+        updated.textContent = 'Pricing last updated: ' + data.metadata.updated;
       }
-    }
-    // Populate filters
-    const gf = document.getElementById('gpu-filter');
-    [...gpuSet].sort().forEach(g => { const o = document.createElement('option'); o.value = g; o.textContent = g; gf.appendChild(o); });
-    const pf = document.getElementById('provider-filter');
-    [...provSet].sort().forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; pf.appendChild(o); });
-    function render() {
-      const gv = gf.value, pv = pf.value, so = document.getElementById('spot-only').checked;
-      const filtered = rows.filter(r => (!gv || r.gpu === gv) && (!pv || r.prov === pv) && (!so || r.spot !== null));
-      filtered.sort((a, b) => a.od - b.od);
-      const tbody = document.getElementById('pricing-body');
-      tbody.innerHTML = filtered.map(r => '<tr><td>' + r.prov + '</td><td>' + r.gpu + '</td><td>' + r.cnt + '</td><td>' + r.mem + 'GB</td><td class="price">$' + r.od.toFixed(2) + '</td><td class="spot">' + (r.spot ? '$' + r.spot.toFixed(2) : '-') + '</td></tr>').join('');
-      if (!filtered.length) tbody.innerHTML = '<tr><td colspan="6">No matching results</td></tr>';
-    }
-    gf.onchange = render; pf.onchange = render; document.getElementById('spot-only').onchange = render;
-    render();
-  } catch(e) { document.getElementById('pricing-body').innerHTML = '<tr><td colspan="6">Failed to load pricing data. <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/data/cloud-pricing.json">View raw data</a></td></tr>'; }
+      const rows = [];
+      for (const [provider, skus] of Object.entries(data.providers || {})) {
+        for (const sku of skus) {
+          rows.push({ provider, ...sku });
+        }
+      }
+      // Sort by GPU name then price
+      rows.sort((a, b) => a.gpu.localeCompare(b.gpu) || a.on_demand - b.on_demand);
+      tbody.innerHTML = rows.map(r => {
+        const url = PROVIDER_URLS[r.provider] || '#';
+        const spotCell = r.spot ? `<span class="price">$${r.spot.toFixed(2)}</span>` : '<span style="color:#8b949e">—</span>';
+        const isLive = r.provider === 'Azure';
+        const badge = isLive
+          ? '<span class="provider-badge live">Live API</span>'
+          : '<span class="provider-badge manual">Monthly</span>';
+        return `<tr>
+          <td><a href="${url}" style="color:#58a6ff;text-decoration:none">${r.provider}</a></td>
+          <td>${r.gpu}${r.cnt > 1 ? ' ×'+r.cnt : ''}</td>
+          <td>${r.mem} GB</td>
+          <td><span class="${priceClass(r.on_demand)}">$${r.on_demand.toFixed(2)}</span></td>
+          <td>${spotCell}</td>
+          <td>${badge}</td>
+        </tr>`;
+      }).join('');
+    })
+    .catch(e => {
+      document.getElementById('pricing-tbody').innerHTML =
+        '<tr><td colspan="6" style="color:#f85149;">Error loading pricing data. <a href="https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json" style="color:#58a6ff">View raw JSON</a></td></tr>';
+      document.getElementById('last-updated').textContent = 'Pricing data unavailable';
+    });
 })();
 </script>
+
 </body>
 </html>

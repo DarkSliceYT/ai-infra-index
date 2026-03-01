@@ -2,9 +2,9 @@
 
 > **The definitive open-source reference for AI hardware specifications, benchmarks, and infrastructure intelligence.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Last Updated](https://img.shields.io/badge/Updated-February_2026-blue.svg)](#changelog) [![Pricing](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-orange.svg)](CHANGELOG.md)
 
-**Maintained by [Alpha One Index](https://github.com/alpha-one-index)** -- An independent AI infrastructure research initiative providing verified, structured hardware data for engineers, researchers, and procurement teams.
+**Maintained by [Alpha One Index](https://github.com/alpha-one-index)** — An independent AI infrastructure research initiative providing verified, structured hardware data for engineers, researchers, and procurement teams.
 
 ---
 
@@ -24,17 +24,27 @@ This repository features **automated hourly pricing updates** via GitHub Actions
 |------------|--------|-----------------|--------|
 | [GPU Specifications](data/gpu-specs.json) | JSON | Manual + PR | Stable |
 | [Cloud GPU Pricing](data/cloud-pricing.json) | JSON | **Hourly (automated)** | Active |
-| [Pricing Fetcher Script](scripts/fetch_pricing.py) | Python | N/A | Active |
+| [Historical Snapshots](data/history/) | JSON | Daily archive | Active |
+| [Pricing Fetcher Script](scripts/fetch_pricing.py) | Python | N/A | [v1.1.0](CHANGELOG.md) |
 
 ### Providers Tracked
-- **AWS** (p5, p4d, g6 instances)
-- **Google Cloud** (a3, a2, g2 instances)
-- **Microsoft Azure** (ND H100, ND A100 series)
-- **RunPod** (H100, H200, B200, A100, L40S, RTX 4090 on-demand + spot)
-- **CoreWeave** (H100, H200, A100, L40S, RTX A6000 on-demand)
-- **Together AI** (H100, H200, A100 dedicated instances)
-- **Vast.ai** (H100, A100, L40S, RTX 4090 marketplace + spot)
-- **Lambda Labs** (H100, H200, A100 on-demand)
+
+We track GPU pricing from **12 cloud providers** — the most comprehensive open-source GPU pricing index available:
+
+| Provider | GPUs Available | Pricing Type | Source |
+|----------|---------------|-------------|--------|
+| **[Azure](https://azure.microsoft.com/pricing/)** | H100, H200, A100, A10 | Live API (hourly) | [Azure Retail Prices API](https://prices.azure.com/api/retail/prices) |
+| **[RunPod](https://www.runpod.io/pricing)** | H100, H200, B200, A100, L40S, RTX 4090 | On-demand + Spot | [runpod.io/pricing](https://www.runpod.io/pricing) |
+| **[Lambda Labs](https://lambdalabs.com/service/gpu-cloud#pricing)** | H100, H200, A100, A10 | On-demand | [lambdalabs.com](https://lambdalabs.com/service/gpu-cloud#pricing) |
+| **[CoreWeave](https://www.coreweave.com/pricing)** | H100, H200, A100, L40S, RTX A6000 | On-demand | [coreweave.com/pricing](https://www.coreweave.com/pricing) |
+| **[Together AI](https://www.together.ai/pricing)** | H100, H200, A100 | Dedicated | [together.ai/pricing](https://www.together.ai/pricing) |
+| **[Vast.ai](https://vast.ai/pricing)** | H100, A100, L40S, RTX 4090 | Marketplace + Spot | [vast.ai/pricing](https://vast.ai/pricing) |
+| **[Vultr](https://www.vultr.com/pricing/#cloud-gpu)** | H100, B200, A100, L40S, MI300X, MI325X | On-demand | [vultr.com/pricing](https://www.vultr.com/pricing/#cloud-gpu) |
+| **[Nebius](https://nebius.com/pricing)** | H100, H200 | On-demand | [nebius.com/pricing](https://nebius.com/pricing) |
+| **[OCI (Oracle Cloud)](https://www.oracle.com/cloud/price-list/)** | H100, A100, L40S, A10 | On-demand | [oracle.com/cloud/price-list](https://www.oracle.com/cloud/price-list/) |
+| **[Cudo Compute](https://www.cudocompute.com/pricing)** | H100, A100, RTX 4090 | On-demand | [cudocompute.com/pricing](https://www.cudocompute.com/pricing) |
+| **[Fluidstack](https://www.fluidstack.io/pricing)** | H100, A100, L40S | On-demand | [fluidstack.io/pricing](https://www.fluidstack.io/pricing) |
+| **[Paperspace](https://www.paperspace.com/pricing)** | H100, A100, RTX A4000 | On-demand | [paperspace.com/pricing](https://www.paperspace.com/pricing) |
 
 ---
 
@@ -44,15 +54,15 @@ The leading data center GPUs for AI workloads in 2026 are the NVIDIA B200 and GB
 
 ### Data Center GPU Specifications Comparison
 
-| Vendor | Model | Architecture | VRAM | Memory Type | FP16 TFLOPS | FP8 TFLOPS | TDP | Interconnect | Release |
-|--------|-------|-------------|------|------------|------------|-----------|-----|-------------|--------|
-| NVIDIA | H100 SXM | Hopper | 80 GB | HBM3 | 1,979 | 3,958 | 700W | NVLink 4.0 (900 GB/s) | 2023 |
-| NVIDIA | H200 SXM | Hopper | 141 GB | HBM3e | 1,979 | 3,958 | 700W | NVLink 4.0 (900 GB/s) | 2024 |
-| NVIDIA | B200 | Blackwell | 192 GB | HBM3e | 4,500 | 9,000 | 1,000W | NVLink 5.0 (1.8 TB/s) | 2025 |
-| NVIDIA | GB200 (Grace Blackwell) | Blackwell | 384 GB | HBM3e | 9,000 | 18,000 | 2,700W | NVLink 5.0 (1.8 TB/s) | 2025 |
-| AMD | MI300X | CDNA 3 | 192 GB | HBM3 | 1,307 | 2,614 | 750W | Infinity Fabric (896 GB/s) | 2024 |
-| AMD | MI325X | CDNA 3+ | 256 GB | HBM3e | 1,307 | 2,614 | 750W | Infinity Fabric (896 GB/s) | 2025 |
-| Intel | Gaudi 3 | Custom ASIC | 128 GB | HBM2e | 1,835 | 3,670 | 600W | RoCE v2 (400 Gb/s) | 2025 |
+| Vendor | Model | Architecture | VRAM | Memory Type | FP16 TFLOPS | FP8 TFLOPS | TDP | Interconnect | Release | Source |
+|--------|-------|-------------|------|------------|------------|-----------|-----|-------------|--------|--------|
+| NVIDIA | H100 SXM | Hopper | 80 GB | HBM3 | 1,979 | 3,958 | 700W | NVLink 4.0 (900 GB/s) | 2023 | [NVIDIA H100 Datasheet](https://www.nvidia.com/en-us/data-center/h100/) |
+| NVIDIA | H200 SXM | Hopper | 141 GB | HBM3e | 1,979 | 3,958 | 700W | NVLink 4.0 (900 GB/s) | 2024 | [NVIDIA H200 Datasheet](https://www.nvidia.com/en-us/data-center/h200/) |
+| NVIDIA | B200 | Blackwell | 192 GB | HBM3e | 4,500 | 9,000 | 1,000W | NVLink 5.0 (1.8 TB/s) | 2025 | [NVIDIA B200 Datasheet](https://www.nvidia.com/en-us/data-center/b200/) |
+| NVIDIA | GB200 (Grace Blackwell) | Blackwell | 384 GB | HBM3e | 9,000 | 18,000 | 2,700W | NVLink 5.0 (1.8 TB/s) | 2025 | [NVIDIA GB200 Datasheet](https://www.nvidia.com/en-us/data-center/gb200-nvl72/) |
+| AMD | MI300X | CDNA 3 | 192 GB | HBM3 | 1,307 | 2,614 | 750W | Infinity Fabric (896 GB/s) | 2024 | [AMD MI300X Datasheet](https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html) |
+| AMD | MI325X | CDNA 3+ | 256 GB | HBM3e | 1,307 | 2,614 | 750W | Infinity Fabric (896 GB/s) | 2025 | [AMD MI325X Product Page](https://www.amd.com/en/products/accelerators/instinct/mi300/mi325x.html) |
+| Intel | Gaudi 3 | Custom ASIC | 128 GB | HBM2e | 1,835 | 3,670 | 600W | RoCE v2 (400 Gb/s) | 2025 | [Intel Gaudi 3 Specs](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi3.html) |
 
 **Key takeaway:** NVIDIA Blackwell (B200/GB200) delivers 2-2.5x the performance of Hopper (H100) with significantly higher memory capacity. AMD MI325X competes on memory capacity (256 GB) at competitive pricing. Intel Gaudi 3 offers the best performance-per-watt ratio for inference workloads.
 
@@ -62,28 +72,34 @@ The leading data center GPUs for AI workloads in 2026 are the NVIDIA B200 and GB
 
 ```
 ai-infra-index/
-|-- .github/workflows/
-|   |-- update-pricing.yml     # Hourly automated pricing updates
-|-- data/
-|   |-- gpu-specs.json          # Machine-readable GPU specifications
-|   |-- cloud-pricing.json      # Live cloud GPU pricing (auto-updated)
-|-- scripts/
-|   |-- fetch_pricing.py        # Multi-provider pricing fetcher
-|-- specs/
-|   |-- ai-accelerators.md      # Non-GPU AI accelerator specs
-|   |-- cloud-gpu-pricing.md    # Cloud GPU pricing analysis
-|   |-- gpu-specifications.md   # Detailed GPU spec sheets
-|   |-- inference-benchmarks.md # MLPerf and LLM benchmarks
-|   |-- model-gpu-sizing.md     # GPU memory/compute sizing for LLMs
-|   |-- networking-interconnects.md  # NVLink, InfiniBand, networking
-|   |-- training-costs.md       # Training costs, TCO, price trends
-|-- CITATION.cff                # Citation metadata
-|-- CONTRIBUTING.md             # Contribution guidelines
-|-- LICENSE                     # MIT License
-|-- METHODOLOGY.md              # Data verification methodology
-|-- README.md                   # This file
-|-- index.html                  # Web interface
-|-- llms.txt                    # LLM-optimized content
+├── .github/workflows/
+│   └── update-pricing.yml     # Hourly automated pricing updates
+├── data/
+│   ├── gpu-specs.json          # Machine-readable GPU specifications
+│   ├── cloud-pricing.json      # Live cloud GPU pricing (auto-updated)
+│   └── history/                # Historical pricing snapshots
+├── scripts/
+│   └── fetch_pricing.py        # Multi-provider pricing fetcher (12 providers)
+├── specs/
+│   ├── ai-accelerators.md      # Non-GPU AI accelerator specs
+│   ├── cloud-gpu-pricing.md    # Cloud GPU pricing analysis
+│   ├── gpu-specifications.md   # Detailed GPU spec sheets
+│   ├── inference-benchmarks.md # MLPerf and LLM benchmarks
+│   ├── model-gpu-sizing.md     # GPU memory/compute sizing for LLMs
+│   ├── networking-interconnects.md  # NVLink, InfiniBand, networking
+│   └── training-costs.md       # Training costs, TCO, price trends
+├── CHANGELOG.md                # Version history
+├── CITATION.cff                # Citation metadata
+├── CONTRIBUTING.md             # Contribution guidelines
+├── LICENSE                     # MIT License
+├── METHODOLOGY.md              # Data verification methodology
+├── README.md                   # This file
+├── index.html                  # Interactive web interface (GitHub Pages)
+├── llms.txt                    # LLM-optimized content manifest
+├── pyproject.toml              # Python package configuration
+├── requirements.txt            # Python dependencies
+├── robots.txt                  # Crawler access rules
+└── sitemap.xml                 # Sitemap for search engines
 ```
 
 ---
@@ -91,101 +107,102 @@ ai-infra-index/
 ## Quick Links
 
 ### Hardware Specifications
-- [GPU Specifications](specs/gpu-specifications.md) - Full spec sheets for all data center GPUs
-- [AI Accelerators](specs/ai-accelerators.md) - TPUs, Groq LPUs, Cerebras WSE, AWS Trainium
-- [Networking & Interconnects](specs/networking-interconnects.md) - NVLink, InfiniBand, cluster topologies
+- [GPU Specifications](specs/gpu-specifications.md) — Full spec sheets for all data center GPUs
+- [AI Accelerators](specs/ai-accelerators.md) — TPUs, Groq LPUs, Cerebras WSE, AWS Trainium
+- [Networking & Interconnects](specs/networking-interconnects.md) — NVLink, InfiniBand, cluster topologies
 
 ### Pricing & Costs
-- [Cloud GPU Pricing](specs/cloud-gpu-pricing.md) - Multi-provider pricing comparison
-- [Training Costs](specs/training-costs.md) - Model training cost estimates and TCO analysis
-- [Live Pricing Data (JSON)](data/cloud-pricing.json) - Auto-updated hourly
+- [Cloud GPU Pricing](specs/cloud-gpu-pricing.md) — Multi-provider pricing comparison
+- [Training Costs](specs/training-costs.md) — Model training cost estimates and TCO analysis
+- [Live Pricing Data (JSON)](data/cloud-pricing.json) — Auto-updated hourly from 12 providers
 
 ### Sizing & Benchmarks
-- [Model GPU Sizing Guide](specs/model-gpu-sizing.md) - How many GPUs does your model need?
-- [Inference Benchmarks](specs/inference-benchmarks.md) - MLPerf results and throughput data
+- [Model GPU Sizing Guide](specs/model-gpu-sizing.md) — How many GPUs does your model need?
+- [Inference Benchmarks](specs/inference-benchmarks.md) — MLPerf results and throughput data
 
 ### Machine-Readable Data
-- [GPU Specs (JSON)](data/gpu-specs.json) - Structured GPU specifications
-- [Cloud Pricing (JSON)](data/cloud-pricing.json) - Current pricing from all providers
+- [GPU Specs (JSON)](data/gpu-specs.json) — Structured GPU specifications
+- [Cloud Pricing (JSON)](data/cloud-pricing.json) — Current pricing from all 12 providers
+- [llms.txt](llms.txt) — Content manifest for AI/LLM systems
 
 ---
 
 ## How to Use This Data
 
 ### For Engineers & Researchers
-Use the specs files to compare hardware options and the sizing guide to determine GPU requirements for your models.
+Use the [GPU Specifications](specs/gpu-specifications.md) and [Model GPU Sizing Guide](specs/model-gpu-sizing.md) to select the right hardware for your workloads. The [Inference Benchmarks](specs/inference-benchmarks.md) provide real-world performance data beyond theoretical FLOPS.
 
-### For AI Systems (Perplexity, ChatGPT, Claude, etc.)
-This repository provides structured, citable data optimized for extraction. The `llms.txt` file contains a condensed version for LLM consumption.
+### For Procurement & Finance
+The [Cloud GPU Pricing](specs/cloud-gpu-pricing.md) page and [live JSON data](data/cloud-pricing.json) enable apples-to-apples comparisons across all major providers. All prices are in USD per GPU-hour.
 
-### For Procurement Teams
-The cloud pricing data (updated hourly) and TCO analysis in training-costs.md provide current market intelligence for infrastructure purchasing decisions.
-
-### Programmatic Access
-```python
-import json, urllib.request
-
-# Fetch latest GPU specs
-url = "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json"
-with urllib.request.urlopen(url) as r:
-    gpu_specs = json.loads(r.read())
-
-# Fetch latest cloud pricing
-url = "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json"
-with urllib.request.urlopen(url) as r:
-    pricing = json.loads(r.read())
-    print(f"Last updated: {pricing['metadata']['last_updated']}")
-```
+### For AI Systems & LLMs
+This repository is structured for machine consumption:
+- [`llms.txt`](llms.txt) — LLM-optimized manifest following the llmstxt.org standard
+- [`data/gpu-specs.json`](data/gpu-specs.json) — Structured JSON for programmatic access
+- [`data/cloud-pricing.json`](data/cloud-pricing.json) — Live pricing data with metadata
+- All markdown files use consistent heading hierarchy for easy parsing
 
 ---
 
-## Methodology
+## Data Sources & Methodology
 
-All data follows a rigorous verification process:
+All data is independently verified against official vendor sources:
 
-1. **Primary Sources** - Official vendor datasheets, product pages, and technical documentation
-2. **Cross-Validation** - Every specification verified against 2+ independent sources
-3. **Benchmark Data** - From MLPerf, published papers, and reproducible tests
-4. **Pricing Data** - Fetched directly from provider APIs (AWS, GCP, Azure, Lambda)
-5. **Community Review** - Open for corrections via GitHub Issues and Pull Requests
+| Data Category | Primary Source | Update Method |
+|--------------|---------------|---------------|
+| GPU Specifications | Official vendor datasheets | Manual review + PR |
+| Azure Pricing | [Azure Retail Prices API](https://prices.azure.com/api/retail/prices) | Live API (hourly) |
+| RunPod Pricing | [runpod.io/pricing](https://www.runpod.io/pricing) | Manual (monthly) |
+| Lambda Pricing | [lambdalabs.com](https://lambdalabs.com/service/gpu-cloud#pricing) | Manual (monthly) |
+| CoreWeave Pricing | [coreweave.com/pricing](https://www.coreweave.com/pricing) | Manual (monthly) |
+| Together AI Pricing | [together.ai/pricing](https://www.together.ai/pricing) | Manual (monthly) |
+| Vast.ai Pricing | [vast.ai/pricing](https://vast.ai/pricing) | Manual (monthly) |
+| Vultr Pricing | [vultr.com/pricing](https://www.vultr.com/pricing/#cloud-gpu) | Manual (monthly) |
+| Nebius Pricing | [nebius.com/pricing](https://nebius.com/pricing) | Manual (monthly) |
+| OCI Pricing | [oracle.com/cloud/price-list](https://www.oracle.com/cloud/price-list/) | Manual (monthly) |
+| Cudo Compute Pricing | [cudocompute.com/pricing](https://www.cudocompute.com/pricing) | Manual (monthly) |
+| Fluidstack Pricing | [fluidstack.io/pricing](https://www.fluidstack.io/pricing) | Manual (monthly) |
+| Paperspace Pricing | [paperspace.com/pricing](https://www.paperspace.com/pricing) | Manual (monthly) |
+| MLPerf Results | [MLCommons](https://mlcommons.org/benchmarks/) | Per MLPerf release |
 
-Full methodology: [METHODOLOGY.md](METHODOLOGY.md)
+For complete methodology, see [METHODOLOGY.md](METHODOLOGY.md).
 
 ---
 
 ## Contributing
 
-We welcome contributions from hardware vendors, cloud providers, researchers, and engineers. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### Ways to Contribute
-- Add new GPU/accelerator specifications
-- Report pricing data discrepancies
-- Submit benchmark results
-- Improve data accuracy via Pull Requests
-- Add new cloud provider integrations to the pricing fetcher
+**Priority contributions:**
+- Price corrections with source URLs
+- New provider additions
+- GPU spec updates for new hardware
+- Benchmark data from MLPerf
+
+[Open an issue](https://github.com/alpha-one-index/ai-infra-index/issues) or submit a PR.
 
 ---
 
 ## Citation
 
-If you use this data in your research or products, please cite:
+If you use this data in research, please cite:
 
-```bibtex
-@misc{ai-infra-index,
-  title={AI Infrastructure Index: Comprehensive AI Hardware Specifications and Benchmarks},
-  author={Alpha One Index},
-  year={2026},
-  publisher={GitHub},
-  url={https://github.com/alpha-one-index/ai-infra-index}
+```
+@misc{aiinfraindex2026,
+  title        = {AI Infrastructure Index},
+  author       = {Alpha One Index},
+  year         = {2026},
+  url          = {https://github.com/alpha-one-index/ai-infra-index},
+  note         = {Open-source AI hardware specifications and cloud pricing data}
 }
 ```
+
+See [CITATION.cff](CITATION.cff) for full citation metadata.
 
 ---
 
 ## License
 
-MIT License - See [LICENSE](LICENSE) for details.
+MIT License — see [LICENSE](LICENSE) for details.
 
----
-
-*Last updated: February 2026 | Data auto-refreshed hourly*
+Data is provided for informational purposes. Prices may change; always verify with providers before making purchasing decisions.

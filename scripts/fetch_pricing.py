@@ -2,10 +2,14 @@
 """fetch_pricing.py - Multi-provider GPU cloud pricing aggregator.
 
 Fetches live pricing from Azure Retail Prices API and combines with
-curated pricing data from RunPod, Lambda, CoreWeave, Together AI,
-and Vast.ai. Outputs data/cloud-pricing.json with historical tracking.
+curated pricing data from 11 additional providers including RunPod,
+Lambda, CoreWeave, Together AI, Vast.ai, Vultr, Nebius, OCI,
+Cudo Compute, Fluidstack, and Paperspace.
 
-Part of the AI Infrastructure Index (https://alpha-one-index.github.io/ai-infra-index/)
+Outputs data/cloud-pricing.json with historical tracking.
+
+Part of the AI Infrastructure Index
+(https://alpha-one-index.github.io/ai-infra-index/)
 """
 
 import json
@@ -19,6 +23,22 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 OUTPUT_FILE = os.path.join(DATA_DIR, "cloud-pricing.json")
 HISTORY_DIR = os.path.join(DATA_DIR, "history")
 AZURE_API = "https://prices.azure.com/api/retail/prices"
+
+# Pricing source URLs for transparency
+PRICING_SOURCES = {
+    "Azure": "https://prices.azure.com/api/retail/prices",
+    "RunPod": "https://www.runpod.io/pricing",
+    "Lambda": "https://lambdalabs.com/service/gpu-cloud#pricing",
+    "CoreWeave": "https://www.coreweave.com/pricing",
+    "Together AI": "https://www.together.ai/pricing",
+    "Vast.ai": "https://vast.ai/pricing",
+    "Vultr": "https://www.vultr.com/pricing/#cloud-gpu",
+    "Nebius": "https://nebius.com/pricing",
+    "OCI": "https://www.oracle.com/cloud/price-list/",
+    "Cudo Compute": "https://www.cudocompute.com/pricing",
+    "Fluidstack": "https://www.fluidstack.io/pricing",
+    "Paperspace": "https://www.paperspace.com/pricing",
+}
 
 # Azure VM SKU -> GPU mapping
 AZURE_GPU_MAP = {
@@ -34,7 +54,8 @@ AZURE_GPU_MAP = {
     "Standard_NV72ads_A10_v5": {"gpu": "A10", "cnt": 2, "mem": 48},
 }
 
-# --- Curated pricing: RunPod (Feb 2026) ---
+# --- Curated pricing: RunPod (last verified Feb 2026) ---
+# Source: https://www.runpod.io/pricing
 RUNPOD_PRICING = [
     {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.49, "spot": 1.89},
     {"gpu": "H200", "mem": 141, "on_demand": 3.59, "spot": None},
@@ -48,7 +69,8 @@ RUNPOD_PRICING = [
     {"gpu": "RTX 3090", "mem": 24, "on_demand": 0.22, "spot": 0.11},
 ]
 
-# --- Curated pricing: Lambda Labs (Feb 2026) ---
+# --- Curated pricing: Lambda Labs (last verified Feb 2026) ---
+# Source: https://lambdalabs.com/service/gpu-cloud#pricing
 LAMBDA_PRICING = [
     {"gpu": "H100 SXM", "cnt": 8, "mem": 640, "on_demand": 23.84},
     {"gpu": "H100 SXM", "cnt": 1, "mem": 80, "on_demand": 2.98},
@@ -58,7 +80,8 @@ LAMBDA_PRICING = [
     {"gpu": "A10", "cnt": 1, "mem": 24, "on_demand": 0.60},
 ]
 
-# --- Curated pricing: CoreWeave (Feb 2026) ---
+# --- Curated pricing: CoreWeave (last verified Feb 2026) ---
+# Source: https://www.coreweave.com/pricing
 COREWEAVE_PRICING = [
     {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.23},
     {"gpu": "H200", "mem": 141, "on_demand": 3.35},
@@ -69,14 +92,16 @@ COREWEAVE_PRICING = [
     {"gpu": "RTX A5000", "mem": 24, "on_demand": 0.34},
 ]
 
-# --- Curated pricing: Together AI Dedicated (Feb 2026) ---
+# --- Curated pricing: Together AI Dedicated (last verified Feb 2026) ---
+# Source: https://www.together.ai/pricing
 TOGETHER_PRICING = [
     {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.50},
     {"gpu": "H200", "mem": 141, "on_demand": 3.30},
     {"gpu": "A100 SXM", "mem": 80, "on_demand": 1.25},
 ]
 
-# --- Curated pricing: Vast.ai market median (Feb 2026) ---
+# --- Curated pricing: Vast.ai marketplace median (last verified Feb 2026) ---
+# Source: https://vast.ai/pricing
 VASTAI_PRICING = [
     {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.45, "spot": 1.80},
     {"gpu": "A100 SXM", "mem": 80, "on_demand": 1.15, "spot": 0.70},
@@ -86,11 +111,68 @@ VASTAI_PRICING = [
     {"gpu": "RTX 3090", "mem": 24, "on_demand": 0.15, "spot": 0.08},
 ]
 
+# --- Curated pricing: Vultr (last verified Feb 2026) ---
+# Source: https://www.vultr.com/pricing/#cloud-gpu
+# Note: Vultr lists per-server pricing; values below are per-GPU equivalent
+VULTR_PRICING = [
+    {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.99},
+    {"gpu": "B200", "mem": 192, "on_demand": 2.99},
+    {"gpu": "A100 SXM", "mem": 80, "on_demand": 2.60},
+    {"gpu": "A100 PCIe", "mem": 40, "on_demand": 1.29},
+    {"gpu": "L40S", "mem": 48, "on_demand": 1.67},
+    {"gpu": "MI300X", "mem": 192, "on_demand": 1.85},
+    {"gpu": "MI325X", "mem": 256, "on_demand": 2.00},
+    {"gpu": "A16", "mem": 64, "on_demand": 0.51},
+]
+
+# --- Curated pricing: Nebius (last verified Feb 2026) ---
+# Source: https://nebius.com/pricing
+NEBIUS_PRICING = [
+    {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.00},
+    {"gpu": "H200 SXM", "mem": 141, "on_demand": 2.30},
+]
+
+# --- Curated pricing: Oracle Cloud Infrastructure (last verified Feb 2026) ---
+# Source: https://www.oracle.com/cloud/price-list/
+# Per-GPU prices derived from bare metal instance pricing
+OCI_PRICING = [
+    {"gpu": "H100 SXM", "mem": 80, "on_demand": 4.10},
+    {"gpu": "A100 SXM", "mem": 80, "on_demand": 2.95},
+    {"gpu": "A100 SXM 40GB", "mem": 40, "on_demand": 2.95},
+    {"gpu": "L40S", "mem": 48, "on_demand": 2.39},
+    {"gpu": "A10", "mem": 24, "on_demand": 1.50},
+]
+
+# --- Curated pricing: Cudo Compute (last verified Feb 2026) ---
+# Source: https://www.cudocompute.com/pricing
+CUDO_PRICING = [
+    {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.50},
+    {"gpu": "A100 SXM", "mem": 80, "on_demand": 1.20},
+    {"gpu": "RTX 4090", "mem": 24, "on_demand": 0.35},
+]
+
+# --- Curated pricing: Fluidstack (last verified Feb 2026) ---
+# Source: https://www.fluidstack.io/pricing
+FLUIDSTACK_PRICING = [
+    {"gpu": "H100 SXM", "mem": 80, "on_demand": 2.21},
+    {"gpu": "A100 SXM", "mem": 80, "on_demand": 1.15},
+    {"gpu": "A100 PCIe", "mem": 40, "on_demand": 0.80},
+    {"gpu": "L40S", "mem": 48, "on_demand": 0.59},
+]
+
+# --- Curated pricing: Paperspace by DigitalOcean (last verified Feb 2026) ---
+# Source: https://www.paperspace.com/pricing
+PAPERSPACE_PRICING = [
+    {"gpu": "H100 SXM", "mem": 80, "on_demand": 3.09},
+    {"gpu": "A100 SXM", "mem": 80, "on_demand": 1.89},
+    {"gpu": "RTX A4000", "mem": 16, "on_demand": 0.56},
+]
+
 
 def fetch_url(url, timeout=30):
     """Fetch URL and return parsed JSON, or None on error."""
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "ai-infra-index/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "ai-infra-index/1.1"})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.loads(resp.read().decode())
     except Exception as e:
@@ -152,6 +234,12 @@ def build_manual_providers():
         "CoreWeave": COREWEAVE_PRICING,
         "Together AI": TOGETHER_PRICING,
         "Vast.ai": VASTAI_PRICING,
+        "Vultr": VULTR_PRICING,
+        "Nebius": NEBIUS_PRICING,
+        "OCI": OCI_PRICING,
+        "Cudo Compute": CUDO_PRICING,
+        "Fluidstack": FLUIDSTACK_PRICING,
+        "Paperspace": PAPERSPACE_PRICING,
     }
     for name, entries in sources.items():
         items = []
@@ -199,7 +287,9 @@ def main():
             "url": "https://alpha-one-index.github.io/ai-infra-index/",
             "providers_count": len(providers),
             "total_skus": sum(len(v) for v in providers.values()),
-            "methodology": "Azure via Retail Prices API; others curated monthly",
+            "methodology": "Azure via Retail Prices API (live); all others curated monthly from official pricing pages",
+            "last_curated": "2026-02",
+            "pricing_sources": PRICING_SOURCES,
         },
         "providers": providers,
     }

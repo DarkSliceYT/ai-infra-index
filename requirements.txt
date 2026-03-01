@@ -1,0 +1,17 @@
+# AI Infrastructure Index - Python Dependencies
+# Used by scripts/fetch_pricing.py
+#
+# Core script uses Python stdlib only (no external dependencies):
+#   urllib.request - HTTP client for Azure Retail Prices API
+#   json           - JSON parsing and output
+#   os             - File system operations
+#   datetime       - Timestamp generation
+#
+# To run the pricing fetcher:
+#   python scripts/fetch_pricing.py
+#
+# Optional development dependencies (uncomment to install):
+# pytest>=7.0       # Unit testing
+# flake8>=6.0       # Code linting
+# black>=23.0       # Code formatting
+# mypy>=1.0         # Type checking

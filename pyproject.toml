@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-infra-index"
+version = "1.1.0"
+description = "Comprehensive AI hardware specifications, benchmarks, and cloud GPU pricing data"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Alpha One Index"}
+]
+keywords = [
+    "ai-hardware", "gpu-pricing", "nvidia", "amd", "tpu",
+    "cloud-computing", "benchmarks", "mlperf", "infrastructure",
+    "h100", "a100", "machine-learning", "deep-learning"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Hardware",
+]
+
+[project.urls]
+Homepage = "https://github.com/alpha-one-index/ai-infra-index"
+Documentation = "https://alpha-one-index.github.io/ai-infra-index/"
+Repository = "https://github.com/alpha-one-index/ai-infra-index"
+Issues = "https://github.com/alpha-one-index/ai-infra-index/issues"
+Changelog = "https://github.com/alpha-one-index/ai-infra-index/blob/main/CHANGELOG.md"
+
+[project.scripts]
+ai-infra-pricing = "scripts.fetch_pricing:main"
+
+[tool.setuptools.packages.find]
+include = ["scripts*", "data*"]
