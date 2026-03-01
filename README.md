@@ -30,9 +30,11 @@ This repository features **automated hourly pricing updates** via GitHub Actions
 - **AWS** (p5, p4d, g6 instances)
 - **Google Cloud** (a3, a2, g2 instances)
 - **Microsoft Azure** (ND H100, ND A100 series)
-- **Lambda Labs** (H100, A100 on-demand)
-- **CoreWeave** (H100 bare metal)
-- **Together AI** (H100 clusters)
+- **RunPod** (H100, H200, B200, A100, L40S, RTX 4090 on-demand + spot)
+- **CoreWeave** (H100, H200, A100, L40S, RTX A6000 on-demand)
+- **Together AI** (H100, H200, A100 dedicated instances)
+- **Vast.ai** (H100, A100, L40S, RTX 4090 marketplace + spot)
+- **Lambda Labs** (H100, H200, A100 on-demand)
 
 ---
 
