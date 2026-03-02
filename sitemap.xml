@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main GitHub Pages site -->
   <url>
     <loc>https://alpha-one-index.github.io/ai-infra-index/</loc>
     <lastmod>2026-03-01</lastmod>
-    <changefreq>hourly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- LLM content manifest -->
+  <url>
+    <loc>https://alpha-one-index.github.io/ai-infra-index/llms.txt</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- GitHub repository root -->
   <url>
     <loc>https://github.com/alpha-one-index/ai-infra-index</loc>
     <lastmod>2026-03-01</lastmod>
-    <changefreq>hourly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Specs files -->
   <url>
     <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-specifications.md</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/cloud-gpu-pricing.md</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -31,39 +42,86 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-cost-optimization-playbook.md</loc>
+    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/cloud-gpu-pricing.md</loc>
     <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/buy-vs-rent-decision-framework.md</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/inference-benchmarks.md</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/networking-interconnects.md</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/model-gpu-sizing.md</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/networking-interconnects.md</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/training-costs.md</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-cost-optimization-playbook.md</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/buy-vs-rent-decision-framework.md</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Data files (raw JSON) -->
+  <url>
+    <loc>https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Trust and provenance -->
+  <url>
+    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/provenance.md</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://github.com/alpha-one-index/ai-infra-index/blob/main/METHODOLOGY.md</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/dataprov.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/croissant.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
