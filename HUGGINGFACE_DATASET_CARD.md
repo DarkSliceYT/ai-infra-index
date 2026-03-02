@@ -131,3 +131,5 @@ The dataset is licensed under the MIT License.
 ## Contributions
 
 Contributions are welcome via Pull Requests. Please see [CONTRIBUTING.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/CONTRIBUTING.md) for data format standards.
+
+<!-- HuggingFace dataset card v1.0.1 - updated 2026-03-02 -->
