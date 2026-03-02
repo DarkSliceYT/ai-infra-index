@@ -36,6 +36,19 @@ jobs:
       - name: Install dependencies
         run: pip install huggingface_hub
 
+      - name: Check HF_TOKEN availability
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::error::HF_TOKEN secret is not configured. Please add it in repository Settings > Secrets and variables > Actions > New repository secret."
+            echo "::error::Get your HuggingFace write token from: https://huggingface.co/settings/tokens"
+            exit 1
+          else
+            echo "HF_TOKEN is configured (length: ${#HF_TOKEN})"
+            echo "::notice::HF_TOKEN found, proceeding with dataset creation"
+          fi
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
       - name: Create HuggingFace dataset repo and upload files
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -45,11 +58,6 @@ jobs:
           from huggingface_hub import HfApi
 
           token = os.environ.get("HF_TOKEN")
-          if not token:
-              print("WARNING: HF_TOKEN secret not configured. Skipping HuggingFace upload.")
-              print("To enable: add HF_TOKEN as a repository secret in Settings > Secrets and variables > Actions")
-              sys.exit(0)
-
           api = HfApi(token=token)
           REPO_ID = "alpha-one-index/ai-infra-index"
           REPO_TYPE = "dataset"
@@ -106,19 +114,16 @@ jobs:
           PYEOF
 
       - name: Verify dataset
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           python3 - <<'PYEOF'
           from huggingface_hub import HfApi
           import os
-          token = os.environ.get("HF_TOKEN")
-          if not token:
-              print("No HF_TOKEN, skipping verification")
-          else:
-              api = HfApi(token=token)
-              files = api.list_repo_files(repo_id="alpha-one-index/ai-infra-index", repo_type="dataset")
-              print("Files in dataset repository:")
-              for f in files:
-                  print(f"  - {f}")
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          files = list(api.list_repo_files(repo_id="alpha-one-index/ai-infra-index", repo_type="dataset"))
+          print("Files in dataset repository:")
+          for f in files:
+              print(f"  - {f}")
+          print(f"Total files: {len(files)}")
           PYEOF
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
