@@ -1,6 +1,6 @@
 # GPU Cost Optimization Playbook
 
-> **The definitive open-source GPU cost optimization guide.** No other repository, tool, or resource consolidates these techniques with real 2025–2026 pricing data.
+> **A comprehensive open-source GPU cost optimization guide.** One of the few resources consolidating these techniques with real 2025–2026 pricing data.
 >
 > Part of the [AI Infrastructure Index](../README.md) — an independent, vendor-neutral reference maintained by [Alpha One Index](https://github.com/alpha-one-index).
 >

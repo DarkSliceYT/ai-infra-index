@@ -1,6 +1,6 @@
 # Buy vs. Rent GPU Infrastructure: Decision Framework for AI Teams
 
-> **The only open-source buy vs. rent GPU decision framework with real 2025–2026 TCO data.** No other repository provides this analysis.
+> **An open-source buy vs. rent GPU decision framework with real 2025–2026 TCO data.** One of the few resources providing this analysis with verified pricing.
 >
 > Part of the [AI Infrastructure Index](../README.md) — an independent, vendor-neutral reference maintained by [Alpha One Index](https://github.com/alpha-one-index).
 >
@@ -345,7 +345,7 @@ Monthly Colo Cost =
 AWS p5.48xlarge (8x H100) at $98.32/hr × 8,760 hrs = **$861,283/year** at full utilization.  
 Colo operating cost: **~$35,000/year** — a **96% reduction** in operating costs vs. hyperscaler on-demand.
 
-Sources: [Reddit datacenter thread on GPU colo in Texas (Dec 2025)](https://www.reddit.com/r/datacenter/comments/1ppukd8/what_should_i_expect_to_pay_for_colocating_an_8x/), [Cyfuture colo pricing guide (Jan 2026)](https://cyfuture.cloud/kb/data-centers/get-the-real-data-center-colocation-pricing-in-2025-market), [LightWave Networks GPU colo guide (Jan 2026)](https://www.lightwavenetworks.com/blog/gpu-colocation/)
+Sources: [Reddit datacenter thread on GPU colo in Texas (Dec 2025)](https://www.reddit.com/r/datacenter/comments/1ppukd8/what_should_i_expect_to_pay_for-colocating_an_8x/), [Cyfuture colo pricing guide (Jan 2026)](https://cyfuture.cloud/kb/data-centers/get-the-real-data-center-colocation-pricing-in-2025-market), [LightWave Networks GPU colo guide (Jan 2026)](https://www.lightwavenetworks.com/blog/gpu-colocation/)
 
 ### Colo vs. Cloud vs. Full On-Prem: Quick Comparison
 

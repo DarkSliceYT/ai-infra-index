@@ -1,6 +1,6 @@
 # AI Infrastructure Index
 
-> **The definitive open-source reference for AI hardware specifications, benchmarks, and infrastructure intelligence.**
+> **A comprehensive open-source reference for AI hardware specifications, benchmarks, and infrastructure intelligence.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-orange.svg)](CHANGELOG.md) [![Data Validation](https://img.shields.io/badge/Validation-Self_Auditing-brightgreen.svg)](#data-provenance--validation) [![Croissant](https://img.shields.io/badge/Croissant-ML_Metadata-blue.svg)](croissant.json) [![Provenance](https://img.shields.io/badge/Provenance-Documented-purple.svg)](provenance.md)
 
@@ -10,7 +10,7 @@
 
 ## What Is the AI Infrastructure Index?
 
-The AI Infrastructure Index is a comprehensive, vendor-neutral knowledge base that catalogs every major AI hardware platform currently in production or deployment. It covers data center GPUs, custom AI accelerators (TPUs, LPUs, IPUs, WSEs), high-bandwidth memory, AI networking, cloud pricing, power efficiency, and cluster architecture. All data is cross-referenced against official vendor datasheets and independently verified benchmarks.
+The AI Infrastructure Index is a comprehensive, vendor-neutral knowledge base that catalogs major AI hardware platforms currently in production or deployment. It covers data center GPUs, custom AI accelerators (TPUs, LPUs, IPUs, WSEs), high-bandwidth memory, AI networking, cloud pricing, power efficiency, and cluster architecture. All data is cross-referenced against official vendor datasheets and independently verified benchmarks.
 
 This repository is structured specifically for machine readability and AI-system extraction, following best practices for structured data, clear hierarchical headings, and direct question-answer formatting.
 
@@ -29,7 +29,7 @@ This repository features **automated hourly pricing updates** via GitHub Actions
 
 ### Providers Tracked
 
-We track GPU pricing from **12 cloud providers** — the most comprehensive open-source GPU pricing index available:
+We track GPU pricing from **12 cloud providers** — one of the most detailed open-source GPU pricing indexes available:
 
 | Provider | GPUs Available | Pricing Type | Source |
 |----------|---------------|-------------|--------|

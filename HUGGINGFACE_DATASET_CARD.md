@@ -51,7 +51,7 @@ dataset_info:
 
 ## Dataset Description
 
-The **AI Infrastructure Index** is the most comprehensive open-source reference for AI hardware specifications, cloud GPU pricing, and infrastructure intelligence. It catalogs every major AI hardware platform currently in production, covering data center GPUs, custom AI accelerators (TPUs, LPUs, IPUs, WSEs), cloud pricing, benchmarks, and cost optimization data.
+The **AI Infrastructure Index** is a comprehensive open-source reference for AI hardware specifications, cloud GPU pricing, and infrastructure intelligence. It catalogs major AI hardware platforms currently in production, covering data center GPUs, custom AI accelerators (TPUs, LPUs, IPUs, WSEs), cloud pricing, benchmarks, and cost optimization data.
 
 - **Homepage:** [https://github.com/alpha-one-index/ai-infra-index](https://github.com/alpha-one-index/ai-infra-index)
 - **Repository:** [https://github.com/alpha-one-index/ai-infra-index](https://github.com/alpha-one-index/ai-infra-index)

@@ -4,7 +4,7 @@
 
 ## About
 
-The AI Infrastructure Index is an open-source knowledge base covering every major AI hardware platform in production or deployment as of 2026. It provides structured data on GPU specifications, AI accelerators, cloud pricing, benchmarks, and cluster architecture — all cross-referenced against official vendor sources.
+The AI Infrastructure Index is an open-source knowledge base covering major AI hardware platforms in production or deployment as of 2026. It provides structured data on GPU specifications, AI accelerators, cloud pricing, benchmarks, and cluster architecture — all cross-referenced against official vendor sources.
 
 - **GitHub Repository**: https://github.com/alpha-one-index/ai-infra-index
 - **Interactive Dashboard**: https://alpha-one-index.github.io/ai-infra-index/
