@@ -1,116 +1,50 @@
-# AI Infrastructure Index — LLM Content Manifest
-# https://alpha-one-index.github.io/ai-infra-index/llms.txt
-# Format: llms.txt v1 (https://llmstxt.org)
-# Last updated: 2026-03-01
-# Maintainer: Alpha One Index (https://github.com/alpha-one-index)
+# AI Infrastructure Index
+# https://alpha-one-index.github.io/ai-infra-index/
+# Maintained by Alpha One Index
 
-## About This Index
+> Comprehensive open-source reference for AI hardware specifications, cloud GPU pricing, inference benchmarks, and infrastructure data. Updated hourly via automated pipelines.
 
-The AI Infrastructure Index is a structured, community-maintained reference for AI compute infrastructure. It tracks GPU specifications, cloud GPU pricing from 12+ providers, AI accelerator benchmarks, networking interconnects, model sizing requirements, training cost estimates, and decision frameworks for cloud vs. on-premises deployments. Data is sourced directly from vendor documentation and updated on a regular schedule. All sources are cited.
+## Overview
 
-Canonical URL: https://alpha-one-index.github.io/ai-infra-index/
-GitHub Repository: https://github.com/alpha-one-index/ai-infra-index
-License: CC BY 4.0 (data), MIT (code)
-Citation: See https://github.com/alpha-one-index/ai-infra-index/blob/main/CITATION.cff
+The AI Infrastructure Index is a vendor-neutral knowledge base covering:
+- Data center GPU specifications (NVIDIA, AMD, Intel)
+- Cloud GPU pricing from 12 providers (updated hourly)
+- AI accelerator specifications (Google TPU, AWS Trainium, Cerebras, Groq)
+- Inference benchmarks (MLPerf v4.1, tokens/second)
+- Model GPU sizing guide (VRAM requirements)
+- Networking and interconnect specifications
+- Training cost estimates
+- GPU cost optimization playbook
+- Buy vs rent decision framework
 
----
+## Key Facts
 
-## Primary Pages
+- 12 cloud providers tracked (AWS, GCP, Azure, CoreWeave, Lambda Labs, RunPod, Vast.ai, Nebius, OCI, Cudo Compute, Fluidstack, Paperspace)
+- 57+ GPU SKUs with pricing
+- H100 on-demand range: $1.87-$6.15/GPU-hour (March 2026)
+- Pricing auto-updated hourly via GitHub Actions
+- MIT License
 
-- [AI Infrastructure Index — Main Site](https://alpha-one-index.github.io/ai-infra-index/)
-  Full dashboard with live pricing table, GPU specs comparison, model sizing guide, FAQ, and data downloads.
+## Pages
 
----
+- [Homepage](https://alpha-one-index.github.io/ai-infra-index/): Overview, pricing table, GPU comparison, FAQ
+- [GPU Specifications](https://alpha-one-index.github.io/ai-infra-index/specs/gpu-specifications.html): H100, H200, B200, A100, MI300X, Gaudi 3 specs
+- [Cloud GPU Pricing](https://alpha-one-index.github.io/ai-infra-index/specs/cloud-gpu-pricing.html): Per-GPU-hour pricing from 12 providers
+- [AI Accelerators](https://alpha-one-index.github.io/ai-infra-index/specs/ai-accelerators.html): Google TPU, AWS Trainium, Cerebras WSE-3, Groq LPU
+- [Inference Benchmarks](https://alpha-one-index.github.io/ai-infra-index/specs/inference-benchmarks.html): MLPerf v4.1, tokens/second, performance per dollar
+- [Model GPU Sizing](https://alpha-one-index.github.io/ai-infra-index/specs/model-gpu-sizing.html): VRAM requirements for LLaMA, Mixtral, GPT-4
+- [Networking & Interconnects](https://alpha-one-index.github.io/ai-infra-index/specs/networking-interconnects.html): NVLink, InfiniBand, RoCE, cluster topologies
+- [Training Costs](https://alpha-one-index.github.io/ai-infra-index/specs/training-costs.html): GPT-4, LLaMA 3, DeepSeek training cost estimates
+- [GPU Cost Optimization](https://alpha-one-index.github.io/ai-infra-index/specs/gpu-cost-optimization.html): Right-sizing, quantization, spot, reserved, batching
+- [Buy vs Rent](https://alpha-one-index.github.io/ai-infra-index/specs/buy-vs-rent.html): Cloud vs on-premise TCO analysis
 
-## Specification Files (Markdown)
+## Citation
 
-- [GPU Specifications](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-specifications.md)
-  Detailed spec sheets for NVIDIA H100 SXM/PCIe, H200, B200, GB200 NVL72, A100; AMD MI300X, MI325X; Intel Gaudi 3. Covers VRAM, memory bandwidth, FP16/FP8/INT8 TFLOPS, TDP, and interconnect specs.
+@misc{aiinfraindex2026,
+  title = {AI Infrastructure Index},
+  author = {Alpha One Index},
+  year = {2026},
+  url = {https://github.com/alpha-one-index/ai-infra-index}
+}
 
-- [AI Accelerators Beyond GPUs](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/ai-accelerators.md)
-  Specifications for Google TPU v5p, AWS Trainium2, Cerebras WSE-3, and Groq LPU. Includes architecture notes, throughput figures, and cloud availability.
-
-- [Cloud GPU Pricing](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/cloud-gpu-pricing.md)
-  On-demand and spot pricing for H100 SXM, H100 PCIe, A100, and other GPUs across 12 cloud providers: Nebius, Fluidstack, CoreWeave, Vast.ai, RunPod, Together AI, Cudo Compute, Azure, Lambda Labs, Vultr, Paperspace, and Oracle Cloud (OCI). Pricing in USD/GPU/hour.
-
-- [Inference Benchmarks](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/inference-benchmarks.md)
-  MLPerf Inference results, tokens/second throughput data for major LLMs (Llama 3, Mistral, Falcon) on H100, A100, MI300X, and TPU v5p. Includes batch size notes and precision settings.
-
-- [Networking and Interconnects](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/networking-interconnects.md)
-  NVLink 4.0 (900 GB/s) and NVLink 5.0 (1.8 TB/s), InfiniBand NDR (400 Gb/s) and HDR (200 Gb/s), AMD Infinity Fabric (896 GB/s), Intel RoCE v2 (400 Gb/s). Cluster topology notes for DGX H100, DGX B200, and large-scale training clusters.
-
-- [Model GPU Sizing Guide](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/model-gpu-sizing.md)
-  VRAM and compute requirements for inference and training across model sizes: 7B, 13B, 34B, 70B, 180B, 405B+. Covers FP16, BF16, INT8, INT4 quantization impact. Includes minimum and recommended GPU configurations.
-
-- [Training Cost Estimates](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/training-costs.md)
-  Estimated compute costs for training major open-weight models. Includes GPU-hours, dollar estimates at market rates, and assumptions. Covers Llama 3 8B/70B/405B, Mistral 7B, Falcon 180B, and GPT-4-class models.
-
-- [GPU Cost Optimization Playbook](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-cost-optimization-playbook.md)
-  Practical strategies for reducing cloud GPU costs: right-sizing GPU selection, spot/preemptible instance usage patterns, reserved instance economics, quantization (FP16 → INT8 → INT4) savings, batching strategies, and multi-cloud arbitrage.
-
-- [Cloud vs On-Prem Decision Framework](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/buy-vs-rent-decision-framework.md)
-  Economic framework for comparing cloud GPU rental, on-premises GPU purchase, and colocation. Includes break-even analysis, utilization threshold calculations, TCO components (power, cooling, networking, depreciation, staff), and decision rules.
-
----
-
-## Machine-Readable Data (JSON)
-
-- [GPU Specs JSON](https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json)
-  Structured GPU specifications as JSON. Fields: model, architecture, vram_gb, vram_type, memory_bandwidth_tbps, fp16_tflops, fp8_tflops, int8_tflops, tdp_watts, interconnect_type, interconnect_bandwidth, release_year, vendor.
-
-- [Cloud Pricing JSON](https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json)
-  Live cloud GPU pricing. Updated hourly via automated pipeline. Fields: provider, gpu_model, gpu_count, on_demand_usd_per_hour, spot_usd_per_hour, region, last_verified. 12 providers tracked.
-
----
-
-## Provenance and Trust Documents
-
-- [Data Provenance](https://github.com/alpha-one-index/ai-infra-index/blob/main/provenance.md)
-  Source documentation for all data points. Lists primary sources (vendor pricing pages, datasheets, MLCommons results), collection methodology, and update schedule.
-
-- [Methodology](https://github.com/alpha-one-index/ai-infra-index/blob/main/METHODOLOGY.md)
-  How data is collected, validated, and published. Covers automated vs. manual collection, spot-check frequency, and accuracy standards.
-
-- [Data Provenance JSON (dataprov.json)](https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/dataprov.json)
-  Machine-readable provenance metadata following W3C PROV-O principles.
-
-- [Croissant ML Metadata (croissant.json)](https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/croissant.json)
-  Croissant metadata format (mlcommons.org/croissant) for ML dataset discoverability.
-
-- [CITATION.cff](https://github.com/alpha-one-index/ai-infra-index/blob/main/CITATION.cff)
-  Citation File Format for academic and research use. Use this when citing this index in papers or reports.
-
-- [Data Validation Script](https://github.com/alpha-one-index/ai-infra-index/blob/main/scripts/validate_data.py)
-  Python script that self-audits data integrity across JSON files. Checks for stale pricing, schema validity, and cross-file consistency.
-
----
-
-## Key Data Points for LLM Reference
-
-### H100 SXM Cloud Pricing (USD/GPU/hour, as of 2026-03-01)
-Nebius: $2.00 | Fluidstack: $2.21 | CoreWeave: $2.23 | Vast.ai: $2.45 ($1.80 spot) | RunPod: $2.49 ($1.89 spot) | Together AI: $2.50 | Cudo Compute: $2.50 | Azure: ~$2.90 | Lambda Labs: $2.98 | Vultr: $2.99 | Paperspace: $3.09 | OCI: $4.10
-
-### GPU Specs Quick Reference (as of 2026-03-01)
-H100 SXM: 80 GB HBM3, 3.35 TB/s, 1979 FP16 TFLOPS, 700W, NVLink 4.0 (900 GB/s)
-H200 SXM: 141 GB HBM3e, 4.8 TB/s, 1979 FP16 TFLOPS, 700W, NVLink 4.0 (900 GB/s)
-B200: 192 GB HBM3e, 8.0 TB/s, 4500 FP16 TFLOPS, 1000W, NVLink 5.0 (1.8 TB/s)
-GB200 NVL72: 384 GB HBM3e, 16.0 TB/s, 9000 FP16 TFLOPS, 2700W, NVLink 5.0 (1.8 TB/s)
-MI300X: 192 GB HBM3, 5.3 TB/s, 1307 FP16 TFLOPS, 750W, Infinity Fabric (896 GB/s)
-MI325X: 256 GB HBM3e, 6.0 TB/s, 1307 FP16 TFLOPS, 750W, Infinity Fabric (896 GB/s)
-Gaudi 3: 128 GB HBM2e, 3.7 TB/s, 1835 FP16 TFLOPS, 600W, RoCE v2 (400 Gb/s)
-A100 SXM: 80 GB HBM2e, 2.0 TB/s, 312 FP16 TFLOPS, 400W, NVLink 3.0 (600 GB/s)
-
----
-
-## Licensing and Reuse
-
-Data files (JSON): Creative Commons Attribution 4.0 (CC BY 4.0)
-Code and scripts: MIT License
-Content may be used for AI training, inference, and citation with attribution to: Alpha One Index, https://github.com/alpha-one-index/ai-infra-index
-
----
-
-## Contact and Contribution
-
-Repository: https://github.com/alpha-one-index/ai-infra-index
-Issues / corrections: https://github.com/alpha-one-index/ai-infra-index/issues
+Last updated: 2026-03-01

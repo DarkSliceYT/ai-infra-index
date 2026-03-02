@@ -1,0 +1,283 @@
+# AI Infrastructure Index - Full Content for AI/LLM Consumption
+# https://alpha-one-index.github.io/ai-infra-index/
+# Maintained by Alpha One Index | MIT License | Last updated: 2026-03-01
+
+---
+
+# GPU SPECIFICATIONS
+
+## NVIDIA Data Center GPUs
+
+### NVIDIA B200 (Blackwell) - 2025
+- Architecture: Blackwell (TSMC 4NP)
+- GPU Memory: 192 GB HBM3e
+- Memory Bandwidth: 8.0 TB/s
+- FP32 Performance: 80 TFLOPS
+- FP16 / BF16 Performance: 4,500 TFLOPS
+- FP8 / FP4 Performance: 9,000 / 18,000 TFLOPS
+- TDP: 1,000W
+- Interconnect: NVLink 5.0 (1,800 GB/s)
+- PCIe: Gen 6.0
+- CUDA Cores: 21,760
+- MSRP: ~$40,000
+
+### NVIDIA H200 SXM - 2024
+- Architecture: Hopper (TSMC 4N)
+- GPU Memory: 141 GB HBM3e
+- Memory Bandwidth: 4.8 TB/s
+- FP16 / BF16 Performance: 989 TFLOPS (same as H100 - memory upgrade only)
+- FP8 Performance: 1,979 TFLOPS
+- TDP: 700W
+- Interconnect: NVLink 4.0 (900 GB/s)
+- CUDA Cores: 16,896
+- MSRP: ~$35,000
+- Key difference vs H100: 76% more memory (141 vs 80 GB), 43% more bandwidth (4.8 vs 3.35 TB/s)
+
+### NVIDIA H100 SXM - 2023
+- Architecture: Hopper (TSMC 4N)
+- GPU Memory: 80 GB HBM3
+- Memory Bandwidth: 3.35 TB/s
+- FP32 Performance: 67 TFLOPS
+- FP16 / BF16 Performance: 989 TFLOPS
+- FP8 Performance: 1,979 TFLOPS
+- TDP: 700W
+- Interconnect: NVLink 4.0 (900 GB/s)
+- PCIe: Gen 5.0
+- CUDA Cores: 16,896
+- MSRP: ~$30,000
+
+### NVIDIA H100 PCIe - 2023
+- GPU Memory: 80 GB HBM3
+- Memory Bandwidth: 2.0 TB/s (vs 3.35 TB/s SXM)
+- FP16 Performance: 756 TFLOPS (vs 989 SXM)
+- TDP: 350W (vs 700W SXM)
+
+### NVIDIA A100 SXM 80GB - 2020
+- Architecture: Ampere (TSMC 7N)
+- GPU Memory: 80 GB HBM2e
+- Memory Bandwidth: 2.0 TB/s
+- FP16 / BF16 Performance: 312 TFLOPS
+- TDP: 400W
+- Interconnect: NVLink 3.0 (600 GB/s)
+- Status: EOL (February 2024)
+
+### NVIDIA L40S - 2023
+- Architecture: Ada Lovelace (TSMC 4N)
+- GPU Memory: 48 GB GDDR6
+- Memory Bandwidth: 864 GB/s
+- FP16 Performance: 733 TFLOPS
+- FP8 Performance: 1,466 TFLOPS
+- TDP: 350W
+- Best for: Cost-efficient inference for models <=13B parameters
+
+## AMD Instinct Data Center GPUs
+
+### AMD Instinct MI300X - 2024
+- Architecture: CDNA 3 (TSMC 5nm + 6nm chiplet)
+- GPU Memory: 192 GB HBM3
+- Memory Bandwidth: 5.3 TB/s
+- FP16 Performance: 1,307 TFLOPS
+- FP8 Performance: 2,614 TFLOPS
+- TDP: 750W
+- Interconnect: Infinity Fabric (896 GB/s)
+- MSRP: ~$15,000
+- vs H100: 2.4x more memory, 1.58x more bandwidth, 1.32x more FP16 TFLOPS
+
+### AMD Instinct MI325X
+- GPU Memory: 256 GB HBM3e (highest memory GPU available)
+- TDP: 750W
+
+## Intel Data Center GPUs
+
+### Intel Gaudi 3 - 2025
+- Memory: 128 GB HBM2e
+- Memory Bandwidth: 3.7 TB/s
+- BF16 Performance: 1,835 TFLOPS
+- FP8 Performance: 3,670 TFLOPS
+- TDP: 900W
+- Networking: 24x 200GbE RoCE v2
+
+### Intel Gaudi 2 - 2023
+- Memory: 96 GB HBM2e
+- Memory Bandwidth: 2.45 TB/s
+- BF16 Performance: 432 TFLOPS
+- TDP: 600W
+
+---
+
+# CLOUD GPU PRICING (USD per GPU-hour, March 2026)
+
+## H100 SXM 80GB
+- Vast.ai: $1.87-$3.50/hr
+- GMI Cloud: $2.10/hr
+- RunPod: $2.49/hr, spot $1.89/hr
+- Lambda Labs: $2.99/hr
+- Google Cloud A3-High: $3.67/hr, spot $2.25/hr
+- AWS P5: $3.93/hr, spot $2.50/hr
+- Azure ND H100 v5: $3.50-$5.00/hr
+- CoreWeave HGX H100: $6.15/hr
+
+## H200 141GB
+- Lambda Labs: $3.29/hr
+- GMI Cloud: $3.35/hr
+- RunPod: $3.59/hr
+- CoreWeave: $6.31/hr
+
+## B200 192GB (Early 2026)
+- Lambda Labs: $4.99/hr
+- RunPod: $5.98/hr
+- CoreWeave: $8.60/hr
+- AWS P6: ~$14.00/hr
+
+## A100 SXM 80GB
+- Vast.ai: $0.80-$1.50/hr
+- RunPod: $1.39/hr, spot $0.79/hr
+- Lambda Labs: $1.79/hr
+- AWS P4d: $2.75/hr
+
+## H100 Price History
+- Q4 2023: $8.00-$10.00/hr (hyperscalers), $4.00-$5.00/hr (specialist)
+- Q2 2024: $6.50-$8.00/hr (hyperscalers)
+- Q4 2024: $5.00-$6.50/hr (hyperscalers)
+- Q2 2025: $3.50-$4.50/hr (after AWS -44% cut June 2025)
+- Q1 2026: $3.50-$4.00/hr (hyperscalers), $1.87-$3.00/hr (specialist)
+
+---
+
+# AI ACCELERATOR SPECIFICATIONS
+
+## Google TPU
+### TPU v5p
+- Memory: 95 GB HBM2e per chip, 2.76 TB/s
+- BF16: 459 TFLOPS, INT8: 918 TOPS
+- Max Pod: 8,960 chips
+
+### TPU v5e
+- Memory: 16 GB HBM2e, 819 GB/s
+- Max Pod: 256 chips, best for cost-efficient inference
+
+## AWS Custom Silicon
+### Trainium2
+- Memory: 96 GB HBM, 2.4 TB/s
+- Instance: trn2.48xlarge (16 chips)
+- Cost: 20-40% cheaper than H100 on AWS
+
+### Inferentia2
+- Memory: 32 GB HBM2e, 2.4 TB/s
+
+## Cerebras WSE-3
+- Transistors: 4 trillion, AI Cores: 900,000
+- On-Chip Memory: 44 GB SRAM
+- On-Chip Bandwidth: 21 PB/s
+- External Memory: Up to 1.5 TB via MemoryX
+
+## Groq LPU
+- Architecture: TSP, On-Chip: 230 MB SRAM, 80 TB/s
+- LLM: 500+ tokens/sec (Llama 2 70B)
+- Inference only (not for training)
+
+---
+
+# INFERENCE BENCHMARKS
+
+## MLPerf v4.1 (November 2024) - Llama 2 70B Offline
+- B200 SXM (8x): ~210 samples/sec
+- H200 SXM (8x): 118.5 samples/sec
+- H100 SXM (8x): 84.2 samples/sec
+- TPU v5e (8x): 45.3 samples/sec
+- A100 SXM (8x): 32.1 samples/sec
+- Gaudi 2 (8x): 22.8 samples/sec
+
+## Tokens/Second - Llama 2 70B
+- H200 TensorRT-LLM FP16: ~155 tok/sec
+- H100 TensorRT-LLM FP16: ~110 tok/sec
+- H100 vLLM FP16: ~85 tok/sec
+- A100 vLLM FP16: ~35 tok/sec
+
+## Quantization (H100 SXM, Llama 2 70B)
+- FP16: ~85 tok/sec, ~140 GB VRAM
+- FP8: ~155 tok/sec, ~70 GB VRAM, <1% quality loss
+- INT4 AWQ: ~195 tok/sec, ~35 GB VRAM, 1-2% quality loss
+
+## Performance Per Dollar
+- H200 Lambda $3.29/hr: ~169,600 tokens/dollar (best)
+- H100 Lambda $2.99/hr: ~132,400 tokens/dollar
+- H100 AWS $3.93/hr: ~100,800 tokens/dollar
+
+---
+
+# MODEL GPU SIZING GUIDE
+
+## VRAM Requirements (FP16 Inference)
+- Llama 3 8B: ~16 GB - 1x RTX 4090
+- Llama 3 70B: ~140 GB - 2x H100 80GB or 1x H200
+- Llama 3 405B: ~810 GB - 11x H100 minimum
+- Mixtral 8x7B: ~94 GB - 2x A100 80GB
+- DeepSeek V3 (671B): ~1,340 GB - 17x H100 minimum
+
+## VRAM Formula
+VRAM (GB) = (Parameters x bytes_per_param) / 1e9 x 1.2
+- FP32=4 bytes, BF16/FP16=2 bytes, INT8=1 byte, INT4=0.5 bytes
+
+## Training Memory
+- Full fine-tuning (AdamW): 18x parameter count in bytes
+- QLoRA: ~0.5x parameter count
+
+---
+
+# NETWORKING & INTERCONNECTS
+
+## NVLink
+- NVLink 3.0 (A100): 600 GB/s
+- NVLink 4.0 (H100/H200): 900 GB/s
+- NVLink 5.0 (B200/GB200): 1,800 GB/s
+
+## InfiniBand
+- HDR: 200 Gb/s
+- NDR: 400 Gb/s (H100/H200 clusters)
+- XDR: 800 Gb/s (B200/GB200 clusters)
+
+---
+
+# AI TRAINING COSTS
+
+## Historical Costs
+- GPT-3 175B (2020): ~$4.6M
+- LLaMA 2 70B (2023): ~$2.1M
+- GPT-4 est. (2023): ~$63M
+- LLaMA 3 70B (2024): ~$7.7M
+- DeepSeek V3 (2024): ~$5.5M
+
+## Formula
+GPU_Hours = (6 x Parameters x Tokens) / (GPU_FLOPS x MFU x 3600)
+Cost = GPU_Hours x Hourly_GPU_Rate
+
+---
+
+# GPU COST OPTIMIZATION
+
+## Key Savings
+- Right-sizing (H100 to L4 for 7B): 60-70%
+- FP8 quantization: ~50%
+- Spot vs on-demand: 35-60%
+- Reserved 1-year: 40-46%
+- Provider arbitrage AWS to RunPod: 36-52%
+
+---
+
+# BUY VS RENT
+
+## TCO (H100, 85% util, 3-year)
+- 8 GPUs: $12K/mo on-prem vs $57K/mo cloud (79% cheaper on-prem)
+- 64 GPUs: $78K/mo vs $282K/mo (72% cheaper)
+
+## When to Choose Cloud
+- Utilization below 50%, horizon under 12 months, variable workloads
+
+## When to Choose On-Premise
+- Utilization >70%, 24+ month horizon, annual cloud bill >$1M
+
+---
+
+Repository: https://github.com/alpha-one-index/ai-infra-index
+Last updated: 2026-03-01
