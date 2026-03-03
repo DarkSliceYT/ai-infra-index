@@ -1,111 +1,49 @@
-# Contributing to the AI Infrastructure Index
+# Contributing to AI Infrastructure Index
 
-Thank you for your interest in contributing to the AI Infrastructure Index. This project aims to be the most accurate and comprehensive open-source reference for AI hardware specifications, benchmarks, and infrastructure data.
-
----
+Thank you for your interest in contributing! This project aims to be the most comprehensive open-source reference for AI hardware specs, cloud GPU pricing, and infrastructure benchmarks.
 
 ## How to Contribute
 
-### Report an Error or Outdated Data
+### Pricing Data
+- **Add a new provider**: Submit a PR adding the provider to `scripts/fetch_pricing.py` and `data/cloud-pricing.json`
+- **Fix stale pricing**: If you spot outdated prices, open an issue or submit a correction PR with a source link
 
-The most valuable contributions are corrections and updates:
+### GPU Specifications
+- **Add new hardware**: Update `data/gpu-specs.json` and `specs/gpu-specifications.md` with official datasheet references
+- **Benchmark data**: Add real-world benchmarks to `specs/inference-benchmarks.md` with methodology and source
 
-1. **Open an Issue** with the label `data-correction` or `outdated-data`
-2. Include:
-   - The specific file and data point that needs correction
-   - The correct value with a link to the primary source
-   - The date you verified the information
+### Documentation
+- **Improve guides**: The `specs/` directory contains sizing guides, cost optimization playbooks, and decision frameworks
+- **Fix errors**: Typos, broken links, or unclear explanations — all welcome
 
-### Suggest New Data
-
-1. **Open an Issue** with the label `new-data`
-2. Include:
-   - What data you'd like to see added
-   - Why it's relevant to AI infrastructure
-   - At least one primary source URL
-
-### Submit a Pull Request
+## Submitting a Pull Request
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b update/h200-pricing`)
-3. Make your changes following the data format standards below
-4. Include source URLs for all data points
-5. Submit a pull request with a clear description
+2. Create a feature branch (`git checkout -b add-provider-xyz`)
+3. Make your changes with clear commit messages
+4. Ensure data files are valid JSON (`python -m json.tool data/cloud-pricing.json`)
+5. Submit a PR with:
+   - What you changed and why
+   - Source links for any new data
+   - Screenshot if updating the GitHub Pages site
 
----
+## Data Quality Standards
 
-## Data Format Standards
+- All pricing data must include a verifiable source URL
+- GPU specifications must reference official vendor datasheets
+- Benchmark results must include methodology, hardware config, and software versions
+- No estimated or projected numbers without clear labeling
 
-### Specification Tables
+## Reporting Issues
 
-All hardware specification tables must follow this format:
-
-```markdown
-| Parameter | Value | Source | Last Verified |
-|---|---|---|---|
-| Memory | 80 GB HBM3 | [NVIDIA Datasheet](url) | 2026-02-28 |
-```
-
-### Pricing Tables
-
-```markdown
-| Provider | Instance Type | Per-GPU-Hour | Region | Last Verified |
-|---|---|---|---|---|
-| AWS | p5.48xlarge | $3.93 | us-east-1 | 2026-02-28 |
-```
-
-### Requirements for All Data
-
-- Every data point must have a **primary source URL**
-- All dates use **ISO 8601 format** (YYYY-MM-DD)
-- Prices are in **USD** unless otherwise noted
-- Performance metrics must specify the **benchmark, configuration, and precision**
-- Vendor-claimed vs independently-verified data must be clearly labeled
-
----
-
-## Verification Requirements
-
-Before submitting, ensure your data meets our [Methodology](METHODOLOGY.md) standards:
-
-- [ ] Data sourced from official vendor documentation or reputable independent testing
-- [ ] Source URL included and accessible
-- [ ] Cross-referenced against at least one additional source where possible
-- [ ] Last-verified date included
-- [ ] No interpolated or estimated values (unless clearly labeled)
-
----
-
-## Scope Guidelines
-
-### In Scope
-- AI training and inference GPUs (data center grade)
-- AI-specific accelerators (TPUs, Trainium, Gaudi, etc.)
-- Cloud GPU pricing from providers with verified availability
-- Networking and interconnect specifications for AI clusters
-- MLPerf and other standardized benchmark results
-
-### Out of Scope
-- Consumer GPUs (gaming products)
-- Unannounced or pre-release products
-- Investment advice or purchasing recommendations
-- Proprietary benchmarks that cannot be independently verified
-
----
+- **Incorrect data**: Open an issue with the correct value and source link
+- **Missing provider**: Open an issue tagged `provider` with the provider name and pricing page URL
+- **Feature requests**: Open an issue tagged `enhancement`
 
 ## Code of Conduct
 
-- Be respectful and constructive
-- Focus on data accuracy, not vendor advocacy
-- Disclose any conflicts of interest (e.g., if you work for a vendor whose data you're submitting)
-- Do not submit marketing materials as technical data
+Be respectful and constructive. This is a data-driven project — back claims with sources.
 
----
+## License
 
-## Recognition
-
-All contributors are recognized in our commit history. Significant contributors may be listed in the README.
-
----
-
-*Questions? Open an issue or reach out via GitHub Discussions.*
+By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
