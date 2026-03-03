@@ -1,35 +1,31 @@
 cff-version: 1.2.0
-title: >-
-  AI Infrastructure Index: Comprehensive AI Hardware Reference
+title: AI Infrastructure Index
 message: >-
-  If you use this data, please cite it using the metadata from this file.
+  If you use this dataset or reference in your research,
+  please cite it using the metadata from this file.
 type: dataset
 authors:
   - name: Alpha One Index
+    website: https://github.com/alpha-one-index
 repository-code: https://github.com/alpha-one-index/ai-infra-index
-url: https://github.com/alpha-one-index/ai-infra-index
+url: https://alpha-one-index.github.io/ai-infra-index/
 abstract: >-
-  A comprehensive vendor-neutral knowledge base covering AI hardware
-  specifications, performance benchmarks, cloud pricing, networking,
-  memory technologies, and power efficiency for data center GPUs, TPUs,
-  and custom AI accelerators including NVIDIA, AMD, Intel, Google,
-  Cerebras, Groq, and more.
+  A comprehensive open-source reference for AI hardware
+  specifications, cloud GPU pricing from 12+ providers
+  (updated hourly), benchmarks, model-to-GPU sizing guides,
+  and infrastructure intelligence. Covers NVIDIA, AMD, Intel,
+  Google TPU, and custom accelerators.
 keywords:
-  - ai-hardware
-  - gpu-specifications
-  - ai-accelerators
-  - tpu
+  - gpu-pricing
+  - ai-infrastructure
+  - cloud-gpu
+  - machine-learning
+  - benchmarks
+  - mlperf
   - nvidia
   - amd
-  - cerebras
-  - groq
-  - hbm-memory
-  - nvlink
-  - infiniband
-  - mlperf-benchmarks
-  - cloud-gpu-pricing
-  - ai-infrastructure
   - deep-learning
+  - hardware-specifications
 license: MIT
-version: 1.0.0
-date-released: 2026-02-28
+version: 1.2.0
+date-released: '2026-03-01'
