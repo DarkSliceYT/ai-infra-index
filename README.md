@@ -429,4 +429,14 @@ See [CITATION.cff](CITATION.cff) for full citation metadata.
 
 MIT License — see [LICENSE](LICENSE) for details.
 
+## Related Projects
+
+Part of the [Alpha One Index](https://github.com/alpha-one-index) family:
+
+| Index | Focus | Link |
+|-------|-------|------|
+| AI Infrastructure Index | GPU specs, cloud pricing, hardware benchmarks | *You are here* |
+| AI Red Teaming Index | Attack tools, vulnerability data, safety benchmarks | [ai-red-teaming-index](https://github.com/alpha-one-index/ai-red-teaming-index) |
+| AI TRiSM Index | Trust, risk, security management vendors & frameworks | [ai-trism-index](https://github.com/alpha-one-index/ai-trism-index) |
+
 Data is provided for informational purposes. Prices may change; always verify with providers before making purchasing decisions.
