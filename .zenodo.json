@@ -1,0 +1,43 @@
+{
+  "title": "AI Infrastructure Index: GPU Specs, Cloud Pricing, and Hardware Benchmarks",
+  "description": "A comprehensive technical reference for AI hardware including GPUs, TPUs, inference accelerators, specs, benchmarks, cloud pricing, and infrastructure comparisons across 12+ cloud providers.",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Alpha One Index",
+      "affiliation": "Independent AI Infrastructure Research"
+    }
+  ],
+  "keywords": [
+    "ai-infrastructure",
+    "gpu-benchmarks",
+    "cloud-gpu-pricing",
+    "nvidia",
+    "amd",
+    "tpu",
+    "inference-accelerators",
+    "mlperf",
+    "ai-hardware"
+  ],
+  "license": {
+    "id": "MIT"
+  },
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/alpha-one-index/ai-infra-index",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/alpha-one-index/ai-red-teaming-index",
+      "relation": "isPartOf",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/alpha-one-index/ai-trism-index",
+      "relation": "isPartOf",
+      "scheme": "url"
+    }
+  ]
+}
