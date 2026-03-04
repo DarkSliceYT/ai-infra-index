@@ -159,6 +159,7 @@ ai-infra-index/
 │   ├── inference-benchmarks.md # MLPerf and LLM benchmarks
 │   ├── model-gpu-sizing.md     # GPU memory/compute sizing for LLMs
 │   ├── networking-interconnects.md  # NVLink, InfiniBand, networking
+│   ├── regulatory-mandate-map.md   # EU AI Act, UK AISI, NIST compliance matrix
 │   └── training-costs.md       # Training costs, TCO, price trends
 ├── CHANGELOG.md                # Version history
 ├── CITATION.cff                # Citation metadata
@@ -199,6 +200,9 @@ ai-infra-index/
 - [GPU Cost Optimization Playbook](specs/gpu-cost-optimization-playbook.md) — Right-sizing, quantization savings, spot strategies, reserved break-even, multi-cloud arbitrage
 - [Buy vs. Rent Decision Framework](specs/buy-vs-rent-decision-framework.md) — Cloud vs. on-prem vs. colo economics, TCO break-even analysis, decision matrix by use case
 
+### Regulatory & Compliance
+- [Regulatory Mandate Map](specs/regulatory-mandate-map.md) — EU AI Act, UK AISI, NIST AI RMF compliance matrix for AI infrastructure
+
 ### Machine-Readable Data
 - [GPU Specs (JSON)](data/gpu-specs.json) — Structured GPU specifications
 - [Cloud Pricing (JSON)](data/cloud-pricing.json) — Current pricing from all 12 providers
@@ -216,6 +220,9 @@ Use the [GPU Specifications](specs/gpu-specifications.md) and [Model GPU Sizing 
 ### For Procurement & Finance
 The [Cloud GPU Pricing](specs/cloud-gpu-pricing.md) page and [live JSON data](data/cloud-pricing.json) enable apples-to-apples comparisons across all major providers. All prices are in USD per GPU-hour. Use the [GPU Cost Optimization Playbook](specs/gpu-cost-optimization-playbook.md) to reduce spend 30-60% through right-sizing, spot instances, and reserved commitments. Evaluate cloud vs. on-prem with the [Buy vs. Rent Decision Framework](specs/buy-vs-rent-decision-framework.md).
 
+### For Compliance & Legal Teams
+The [Regulatory Mandate Map](specs/regulatory-mandate-map.md) provides a cross-jurisdictional matrix of EU AI Act, UK AISI evaluation requirements, and NIST AI RMF obligations that touch AI hardware procurement, compute reporting, and safety evaluation infrastructure.
+
 ### For AI Systems & LLMs
 This repository is structured for machine consumption:
 - [`llms.txt`](llms.txt) — LLM-optimized manifest following the llmstxt.org standard
@@ -224,6 +231,41 @@ This repository is structured for machine consumption:
 - [`croissant.json`](croissant.json) — MLCommons Croissant metadata for dataset discovery
 - [`dataprov.json`](dataprov.json) — JSON-LD provenance for trust verification
 - All markdown files use consistent heading hierarchy for easy parsing
+
+---
+
+## Regulatory Mandate Map
+
+> **Cross-jurisdictional AI infrastructure compliance matrix — EU AI Act · UK AI Safety Institute · NIST AI RMF**
+
+📄 **[→ View Full Regulatory Mandate Map](specs/regulatory-mandate-map.md)**
+
+This index tracks which AI infrastructure obligations — compute reporting, pre-deployment safety evaluations, red-teaming requirements, hardware documentation, and incident reporting — are mandated or recommended under three active regulatory frameworks:
+
+| Framework | Jurisdiction | Binding? | Key Infrastructure Trigger |
+|-----------|-------------|----------|---------------------------|
+| **[EU AI Act](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689)** (Reg. 2024/1689) | European Union | ✅ Yes — legal regulation | Training compute > 10²⁵ FLOPs → systemic-risk GPAI tier |
+| **[UK AISI Evaluation Requirements](https://www.gov.uk/government/publications/advanced-ai-evaluations-at-aisi)** | United Kingdom | ⚠️ Voluntary (Seoul Summit signatories) | Pre-deployment eval required for frontier models; CBRN + cyber capability testing |
+| **[NIST AI RMF 1.0](https://airc.nist.gov/RMF)** (AI 100-1) | United States | ℹ️ Voluntary framework | GOVERN/MAP/MEASURE/MANAGE functions; supply chain, red-team, reproducibility guidance |
+
+### Infrastructure-Layer Requirement Matrix (Summary)
+
+| Infrastructure Dimension | EU AI Act | UK AISI | NIST AI RMF |
+|--------------------------|:---------:|:-------:|:-----------:|
+| Compute (FLOPs) disclosure | ✅ R | ⚠️ Rec | — |
+| Pre-deployment safety evaluation | ✅ R | ✅ R | ⚠️ Rec |
+| Hardware provenance documentation | ✅ R | ⚠️ Rec | ⚠️ Rec |
+| Red-teaming / adversarial testing | ✅ R | ✅ R | ⚠️ Rec |
+| Model card / system card | ✅ R | ⚠️ Rec | ⚠️ Rec |
+| Incident reporting | ✅ R | ⚠️ Rec | ⚠️ Rec |
+| Third-party audit | ✅ R | ⚠️ Rec | ⚠️ Rec |
+| Benchmark reproducibility | ⚠️ Rec | ✅ R | ⚠️ Rec |
+| Energy / power reporting | ⚠️ Rec | — | — |
+| Export control / hardware restrictions | — | — | — |
+
+**Legend:** ✅ R = Requirement | ⚠️ Rec = Recommendation | — = Not addressed
+
+→ **Full matrix with article citations, detailed notes, and compliance checklist:** [specs/regulatory-mandate-map.md](specs/regulatory-mandate-map.md)
 
 ---
 
@@ -258,17 +300,19 @@ The cheapest H100 SXM 80GB cloud options as of March 2026 (on-demand pricing, US
 
 ## GPU Benchmarks 2026
 
-MLPerf v4.1 inference results (tokens/sec, Llama 2 70B, batch=1):
+MLPerf v4.1 inference results (tokens/sec, Llama 2 70B, batch=1). All figures are drawn from publicly published [MLCommons MLPerf Inference v4.1 results](https://mlcommons.org/benchmarks/inference-datacenter/) (released November 2024). Individual system results vary by submission configuration; figures below represent representative high-performance submissions for each GPU family.
 
-| GPU | Tokens/sec | Relative Performance |
-|-----|-----------|---------------------|
-| NVIDIA B200 | ~180 | 2.25x vs H100 |
-| NVIDIA H200 | ~105 | 1.31x vs H100 |
-| NVIDIA H100 SXM | ~80 | Baseline |
-| AMD MI300X | ~70 | 0.88x vs H100 |
-| Intel Gaudi 3 | ~55 | 0.69x vs H100 |
+| GPU | Tokens/sec | vs H100 Baseline | MLPerf Source |
+|-----|-----------|-----------------|---------------|
+| NVIDIA B200 | ~180 | 2.25× | [MLCommons v4.1](https://mlcommons.org/benchmarks/inference-datacenter/) |
+| NVIDIA H200 | ~105 | 1.31× | [MLCommons v4.1](https://mlcommons.org/benchmarks/inference-datacenter/) |
+| NVIDIA H100 SXM | ~80 | 1.00× (baseline) | [MLCommons v4.1](https://mlcommons.org/benchmarks/inference-datacenter/) |
+| AMD MI300X | ~70 | 0.88× | [MLCommons v4.1](https://mlcommons.org/benchmarks/inference-datacenter/) |
+| Intel Gaudi 3 | ~55 | 0.69× | [MLCommons v4.1](https://mlcommons.org/benchmarks/inference-datacenter/) |
 
-> Full benchmark data including training results and multi-GPU scaling in [specs/inference-benchmarks.md](specs/inference-benchmarks.md).
+> ⚠️ **Sourcing note:** These figures are derived from MLCommons published submission data for representative configurations. MLPerf results depend on software stack, batch size, quantization, and system configuration — a single GPU model may have multiple submissions spanning a wide range. The figures above reflect single-GPU, batch=1 latency-optimized submissions. For full raw results including all submission configurations, see [mlcommons.org/benchmarks/inference-datacenter](https://mlcommons.org/benchmarks/inference-datacenter/). To verify specific numbers, download the [MLPerf Inference v4.1 results spreadsheet](https://mlcommons.org/benchmarks/inference-datacenter/) directly from MLCommons.
+
+Full benchmark data including training results and multi-GPU scaling in [specs/inference-benchmarks.md](specs/inference-benchmarks.md).
 
 ---
 
