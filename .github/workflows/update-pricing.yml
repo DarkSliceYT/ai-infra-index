@@ -2,11 +2,16 @@ name: Update GPU Pricing Data
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *'  # Runs every hour
   workflow_dispatch:
 
 permissions:
   contents: write
+
+env:
+  S3_BUCKET: ai-infra-index-data
+  S3_PREFIX: gpu-pricing
+  ADX_DATASET_ID: ${{ secrets.ADX_DATASET_ID }}
 
 jobs:
   update-pricing:
@@ -22,6 +27,76 @@ jobs:
         run: python scripts/fetch_pricing.py
         env:
           PYTHONUNBUFFERED: '1'
+
+      - name: Configure AWS credentials
+        if: env.ADX_DATASET_ID != ''
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Upload to S3 for AWS Data Exchange
+        if: env.ADX_DATASET_ID != ''
+        run: |
+          TIMESTAMP=$(date -u '+%Y-%m-%dT%H:%M')
+          echo "Uploading GPU pricing data to S3..."
+          aws s3 cp data/cloud-pricing.json "s3://${S3_BUCKET}/${S3_PREFIX}/latest/cloud-pricing.json"
+          aws s3 cp data/cloud-pricing.json "s3://${S3_BUCKET}/${S3_PREFIX}/snapshots/${TIMESTAMP}-cloud-pricing.json"
+          if [ -d data/history ]; then
+            aws s3 sync data/history/ "s3://${S3_BUCKET}/${S3_PREFIX}/history/" --size-only
+          fi
+          echo "S3_UPLOAD=true" >> $GITHUB_ENV
+          echo "Uploaded to s3://${S3_BUCKET}/${S3_PREFIX}/"
+
+      - name: Create AWS Data Exchange revision
+        if: env.S3_UPLOAD == 'true'
+        run: |
+          pip install boto3 -q
+          python -c "
+          import boto3, os
+          from datetime import datetime
+          adx = boto3.client('dataexchange', region_name='us-east-1')
+          dataset_id = os.environ['ADX_DATASET_ID']
+          if not dataset_id:
+            print('No ADX_DATASET_ID set, skipping')
+            exit(0)
+          ts = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
+          revision = adx.create_revision(
+            DataSetId=dataset_id,
+            Comment=f'Hourly GPU pricing update {ts}'
+          )
+          rev_id = revision['Id']
+          print(f'Created revision {rev_id}')
+          bucket = os.environ['S3_BUCKET']
+          prefix = os.environ['S3_PREFIX']
+          job = adx.create_job(
+            Type='IMPORT_ASSETS_FROM_S3',
+            Details={
+              'ImportAssetsFromS3': {
+                'DataSetId': dataset_id,
+                'RevisionId': rev_id,
+                'AssetSources': [
+                  {'Bucket': bucket, 'Key': f'{prefix}/latest/cloud-pricing.json'}
+                ]
+              }
+            }
+          )
+          job_id = job['Id']
+          print(f'Created import job {job_id}')
+          import time
+          for _ in range(30):
+            status = adx.get_job(JobId=job_id)['State']
+            if status in ('COMPLETED', 'ERROR', 'CANCELLED'):
+              break
+            time.sleep(2)
+          final = adx.get_job(JobId=job_id)
+          print(f'Job status: {final["State"]}')
+          if final['State'] == 'COMPLETED':
+            adx.update_revision(DataSetId=dataset_id, RevisionId=rev_id, Finalized=True)
+            print(f'Revision {rev_id} finalized')
+          "
+        continue-on-error: true
 
       - name: Commit and push if changed
         run: |
