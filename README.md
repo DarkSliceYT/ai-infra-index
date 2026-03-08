@@ -6,6 +6,16 @@
 
 **Maintained by [Alpha One Index](https://github.com/alpha-one-index)** — An independent AI infrastructure research initiative providing verified, structured hardware data for engineers, researchers, and procurement teams.
 
+### Sponsors
+
+> **Support this project** — [Become a sponsor](https://github.com/sponsors/alpha-one-index) and help keep AI infrastructure data free, open-source, and accurate.
+
+<!-- sponsors -->
+
+*Your logo here — [Sponsor Alpha One Index](https://github.com/sponsors/alpha-one-index)*
+
+<!-- /sponsors -->
+
 ### Live Demos & Data Access
 
 | Platform | Link | Description |
