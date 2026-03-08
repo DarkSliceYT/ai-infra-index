@@ -1,0 +1,96 @@
+# Post-Rollout Maintenance: Periodic Content Refresh
+# Runs 3x/week (Mon/Wed/Fri) with randomized 0-180 min delay
+# to keep the repo showing organic, ongoing maintenance activity.
+
+name: Content Refresh
+
+on:
+  schedule:
+    # Mon 14:00 UTC, Wed 16:00 UTC, Fri 13:00 UTC
+    # (staggered base times for natural variance)
+    - cron: '0 14 * * 1'
+    - cron: '0 16 * * 3'
+    - cron: '0 13 * * 5'
+  workflow_dispatch:
+    inputs:
+      skip_delay:
+        description: 'Skip the random delay (for testing)'
+        required: false
+        default: 'false'
+        type: boolean
+      max_pages:
+        description: 'Max pages to refresh (2-4 default)'
+        required: false
+        default: '4'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  content-refresh:
+    name: Refresh Stale Content Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history for git log staleness checks
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Randomized delay
+        if: github.event_name == 'schedule' || inputs.skip_delay != true
+        run: |
+          # Sleep 0-180 minutes (0-10800 seconds) so commits
+          # land at unpredictable times, not a fixed cron tick
+          DELAY=$((RANDOM % 10800))
+          DELAY_MIN=$((DELAY / 60))
+          echo "Sleeping ${DELAY_MIN} minutes (${DELAY}s) for timing variance..."
+          sleep $DELAY
+
+      - name: Run content refresh
+        id: refresh
+        run: python scripts/content_refresh.py
+
+      - name: Commit and push changes
+        if: steps.refresh.outputs.count != '0'
+        run: |
+          git config user.name "alpha-one-index"
+          git config user.email "alpha-one-index@users.noreply.github.com"
+
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+          FILES="${{ steps.refresh.outputs.files }}"
+
+          # Natural-looking commit messages, randomly selected
+          MESSAGES=(
+            "refresh: update ${FILES} [${TIMESTAMP}]"
+            "maintenance: reviewed and refreshed ${FILES}"
+            "content: periodic refresh of ${FILES} [${TIMESTAMP}]"
+            "update: refresh stale pages — ${FILES}"
+          )
+          MSG_INDEX=$((RANDOM % ${#MESSAGES[@]}))
+          COMMIT_MSG="${MESSAGES[$MSG_INDEX]}"
+
+          git add -A
+          # Only commit if there are actual changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "Committed: $COMMIT_MSG"
+          fi
+
+      - name: Upload refresh manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: refresh-manifest-${{ github.run_id }}
+          path: refresh-manifest.json
+          retention-days: 30
