@@ -1,6 +1,8 @@
 # New Page Generator — Automated Unique Page Creation
 # Runs 3x/week (Tue/Thu/Sat) with randomized 0-180 min delay
 # to keep the repo growing with unique, data-backed pages.
+# NOTE: Scheduled runs are gated until 2026-04-01 to avoid
+# overlap with the March 13 launch rollout.
 
 name: New Page Generator
 
@@ -48,6 +50,19 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Check start date gate
+        if: github.event_name == 'schedule'
+        run: |
+          # Don't run scheduled jobs until after the March launch
+          # rollout completes. Manual dispatch bypasses this gate.
+          START_DATE="2026-04-01"
+          TODAY=$(date -u '+%Y-%m-%d')
+          if [[ "$TODAY" < "$START_DATE" ]]; then
+            echo "Skipping: scheduled runs begin on $START_DATE (today is $TODAY)"
+            exit 1
+          fi
+          echo "Date gate passed: $TODAY >= $START_DATE"
 
       - name: Randomized delay
         if: github.event_name == 'schedule'
