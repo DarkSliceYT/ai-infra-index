@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-11T23:01:06Z",
+    "updated": "2026-03-11T23:53:37Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 116,
+    "total_skus": 109,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,28 +118,28 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.86,
+        "on_demand": 0.73,
         "offers_sampled": 4,
-        "price_min": 0.53,
-        "price_max": 1.33
+        "price_min": 0.66,
+        "price_max": 1.07
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.47,
+        "on_demand": 1.87,
         "offers_sampled": 1,
-        "price_min": 1.47,
-        "price_max": 1.47
+        "price_min": 1.87,
+        "price_max": 1.87
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.33,
+        "on_demand": 2.45,
         "offers_sampled": 3,
-        "price_min": 2.14,
-        "price_max": 2.84
+        "price_min": 2.33,
+        "price_max": 3.08
       },
       {
         "gpu": "L40",
@@ -163,7 +163,7 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.13,
+        "on_demand": 0.14,
         "offers_sampled": 3,
         "price_min": 0.12,
         "price_max": 0.2
@@ -174,8 +174,17 @@
         "mem": 24,
         "on_demand": 0.4,
         "offers_sampled": 3,
+        "price_min": 0.32,
+        "price_max": 0.54
+      },
+      {
+        "gpu": "RTX A6000",
+        "cnt": 1,
+        "mem": 48,
+        "on_demand": 0.37,
+        "offers_sampled": 1,
         "price_min": 0.37,
-        "price_max": 0.67
+        "price_max": 0.37
       }
     ],
     "RunPod": [
@@ -346,7 +355,8 @@
         "mem": 80,
         "on_demand": 1.99,
         "secure_price": 2.39,
-        "spot": 1.35
+        "spot": 1.35,
+        "min_bid": 1.35
       },
       {
         "gpu": "H200 SXM",
@@ -614,22 +624,6 @@
         "instance_type": "gpu_1x_a10"
       },
       {
-        "gpu": "RTX 6000 (24 GB)",
-        "cnt": 1,
-        "mem": 46,
-        "on_demand": 0.58,
-        "per_gpu": 0.58,
-        "instance_type": "gpu_1x_rtx6000"
-      },
-      {
-        "gpu": "A100 (40 GB PCIe)",
-        "cnt": 1,
-        "mem": 200,
-        "on_demand": 1.48,
-        "per_gpu": 1.48,
-        "instance_type": "gpu_1x_a100"
-      },
-      {
         "gpu": "A100 (40 GB SXM4)",
         "cnt": 1,
         "mem": 200,
@@ -638,60 +632,12 @@
         "instance_type": "gpu_1x_a100_sxm4"
       },
       {
-        "gpu": "A100 (40 GB PCIe)",
-        "cnt": 2,
-        "mem": 400,
-        "on_demand": 2.96,
-        "per_gpu": 1.48,
-        "instance_type": "gpu_2x_a100"
-      },
-      {
-        "gpu": "A100 (40 GB PCIe)",
-        "cnt": 4,
-        "mem": 800,
-        "on_demand": 5.92,
-        "per_gpu": 1.48,
-        "instance_type": "gpu_4x_a100"
-      },
-      {
         "gpu": "A100 (40 GB SXM4)",
         "cnt": 8,
         "mem": 1800,
         "on_demand": 11.84,
         "per_gpu": 1.48,
         "instance_type": "gpu_8x_a100"
-      },
-      {
-        "gpu": "A6000 (48 GB)",
-        "cnt": 1,
-        "mem": 100,
-        "on_demand": 0.92,
-        "per_gpu": 0.92,
-        "instance_type": "gpu_1x_a6000"
-      },
-      {
-        "gpu": "A6000 (48 GB)",
-        "cnt": 2,
-        "mem": 200,
-        "on_demand": 1.84,
-        "per_gpu": 0.92,
-        "instance_type": "gpu_2x_a6000"
-      },
-      {
-        "gpu": "A6000 (48 GB)",
-        "cnt": 4,
-        "mem": 400,
-        "on_demand": 3.68,
-        "per_gpu": 0.92,
-        "instance_type": "gpu_4x_a6000"
-      },
-      {
-        "gpu": "Tesla V100 (16 GB)",
-        "cnt": 8,
-        "mem": 448,
-        "on_demand": 5.04,
-        "per_gpu": 0.63,
-        "instance_type": "gpu_8x_v100"
       },
       {
         "gpu": "Tesla V100 (16 GB)",
