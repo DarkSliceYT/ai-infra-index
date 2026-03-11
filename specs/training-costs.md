@@ -196,3 +196,5 @@ Cost at $98.32/hr (AWS p5): 8 x 37.5 x $98.32 = ~$29.5K
 *Last updated: February 2026*
 *Methodology: Compute estimates use Chinchilla scaling law GPU-hour formula. Cloud prices from public APIs. On-prem TCO from industry benchmarks.*
 *See [model-gpu-sizing.md](model-gpu-sizing.md) for memory requirements and [cloud-gpu-pricing.md](cloud-gpu-pricing.md) for current pricing.*
+
+<!-- last_reviewed: 2026-03-11 -->
