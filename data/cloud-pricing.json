@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-11T16:01:00Z",
+    "updated": "2026-03-11T17:00:58Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 117,
+    "total_skus": 118,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,25 +118,25 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.96,
-        "offers_sampled": 2,
-        "price_min": 0.74,
-        "price_max": 1.18
+        "on_demand": 0.74,
+        "offers_sampled": 3,
+        "price_min": 0.67,
+        "price_max": 1.33
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.47,
+        "on_demand": 1.87,
         "offers_sampled": 1,
-        "price_min": 1.47,
-        "price_max": 1.47
+        "price_min": 1.87,
+        "price_max": 1.87
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.26,
+        "on_demand": 2.29,
         "offers_sampled": 4,
         "price_min": 1.7,
         "price_max": 2.84
@@ -163,19 +163,28 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.14,
+        "on_demand": 0.16,
         "offers_sampled": 3,
-        "price_min": 0.12,
+        "price_min": 0.14,
         "price_max": 0.2
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.35,
+        "on_demand": 0.4,
         "offers_sampled": 3,
-        "price_min": 0.27,
+        "price_min": 0.28,
         "price_max": 0.54
+      },
+      {
+        "gpu": "RTX A6000",
+        "cnt": 1,
+        "mem": 48,
+        "on_demand": 0.37,
+        "offers_sampled": 1,
+        "price_min": 0.37,
+        "price_max": 0.37
       }
     ],
     "RunPod": [
@@ -210,8 +219,7 @@
         "mem": 24,
         "on_demand": 0.22,
         "secure_price": 0.41,
-        "spot": 0.11,
-        "min_bid": 0.11
+        "spot": 0.11
       },
       {
         "gpu": "A40",
@@ -408,8 +416,7 @@
         "mem": 20,
         "on_demand": 0.2,
         "secure_price": 0.26,
-        "spot": 0.1,
-        "min_bid": 0.1
+        "spot": 0.1
       },
       {
         "gpu": "RTX 4000 Ada SFF",
