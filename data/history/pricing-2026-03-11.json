@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-11T14:38:24Z",
+    "updated": "2026-03-11T15:01:02Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,10 +118,10 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.89,
-        "offers_sampled": 4,
+        "on_demand": 0.74,
+        "offers_sampled": 3,
         "price_min": 0.67,
-        "price_max": 1.32
+        "price_max": 1.31
       },
       {
         "gpu": "H100 SXM",
@@ -136,9 +136,9 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.24,
+        "on_demand": 2.1,
         "offers_sampled": 4,
-        "price_min": 1.99,
+        "price_min": 1.71,
         "price_max": 2.84
       },
       {
@@ -174,8 +174,8 @@
         "mem": 24,
         "on_demand": 0.4,
         "offers_sampled": 3,
-        "price_min": 0.28,
-        "price_max": 0.67
+        "price_min": 0.24,
+        "price_max": 0.54
       },
       {
         "gpu": "RTX A6000",
@@ -219,7 +219,8 @@
         "mem": 24,
         "on_demand": 0.22,
         "secure_price": 0.41,
-        "spot": 0.11
+        "spot": 0.11,
+        "min_bid": 0.11
       },
       {
         "gpu": "A40",
@@ -227,7 +228,8 @@
         "mem": 48,
         "on_demand": 0.35,
         "secure_price": 0.4,
-        "spot": 0.24
+        "spot": 0.24,
+        "min_bid": 0.24
       },
       {
         "gpu": "B200",
@@ -477,7 +479,8 @@
         "mem": 48,
         "on_demand": 0.33,
         "secure_price": 0.49,
-        "spot": 0.25
+        "spot": 0.25,
+        "min_bid": 0.25
       },
       {
         "gpu": "RTX PRO 4500",
