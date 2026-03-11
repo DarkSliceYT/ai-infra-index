@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-11T13:01:02Z",
+    "updated": "2026-03-11T14:01:01Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 119,
+    "total_skus": 118,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,54 +118,54 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.9,
+        "on_demand": 0.89,
         "offers_sampled": 4,
-        "price_min": 0.67,
-        "price_max": 1.34
+        "price_min": 0.6,
+        "price_max": 1.18
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.87,
+        "on_demand": 1.67,
         "offers_sampled": 1,
-        "price_min": 1.87,
-        "price_max": 1.87
+        "price_min": 1.67,
+        "price_max": 1.67
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.84,
-        "offers_sampled": 3,
-        "price_min": 1.74,
-        "price_max": 3.23
+        "on_demand": 2.3,
+        "offers_sampled": 4,
+        "price_min": 1.72,
+        "price_max": 2.84
       },
       {
         "gpu": "L40",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.34,
+        "on_demand": 0.58,
         "offers_sampled": 1,
-        "price_min": 0.34,
-        "price_max": 0.34
+        "price_min": 0.58,
+        "price_max": 0.58
       },
       {
         "gpu": "L40S",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 1.21,
+        "on_demand": 0.94,
         "offers_sampled": 1,
-        "price_min": 1.21,
-        "price_max": 1.21
+        "price_min": 0.94,
+        "price_max": 0.94
       },
       {
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.16,
+        "on_demand": 0.14,
         "offers_sampled": 3,
-        "price_min": 0.14,
+        "price_min": 0.12,
         "price_max": 0.2
       },
       {
@@ -174,17 +174,8 @@
         "mem": 24,
         "on_demand": 0.4,
         "offers_sampled": 3,
-        "price_min": 0.34,
-        "price_max": 0.67
-      },
-      {
-        "gpu": "RTX A4000",
-        "cnt": 1,
-        "mem": 16,
-        "on_demand": 0.08,
-        "offers_sampled": 1,
-        "price_min": 0.08,
-        "price_max": 0.08
+        "price_min": 0.33,
+        "price_max": 0.56
       },
       {
         "gpu": "RTX A6000",
@@ -210,8 +201,7 @@
         "mem": 80,
         "on_demand": 1.19,
         "secure_price": 1.39,
-        "spot": 0.6,
-        "min_bid": 0.6
+        "spot": 0.6
       },
       {
         "gpu": "A100 SXM",
@@ -477,8 +467,7 @@
         "mem": 24,
         "on_demand": 0.16,
         "secure_price": 0.27,
-        "spot": 0.11,
-        "min_bid": 0.11
+        "spot": 0.11
       },
       {
         "gpu": "RTX A6000",
@@ -486,7 +475,8 @@
         "mem": 48,
         "on_demand": 0.33,
         "secure_price": 0.49,
-        "spot": 0.25
+        "spot": 0.25,
+        "min_bid": 0.25
       },
       {
         "gpu": "RTX PRO 4500",
