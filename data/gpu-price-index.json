@@ -1,0 +1,470 @@
+{
+  "metadata": {
+    "name": "GPU Cloud Price Index (GCPI)",
+    "description": "Proprietary price index tracking cloud GPU costs across providers over time. Base index = 100 on first tracking date.",
+    "version": "1.0.0",
+    "generated": "2026-03-12T07:00:59Z",
+    "source": "AI Infrastructure Index",
+    "url": "https://alpha-one-index.github.io/ai-infra-index/",
+    "methodology": "Median per-GPU-hour price across all providers and regions, normalized to base date index of 100",
+    "base_date": "2026-03-01",
+    "latest_date": "2026-03-12",
+    "total_snapshots": 12,
+    "tracked_gpus": [
+      "H100 SXM",
+      "H100",
+      "A100 SXM",
+      "A100",
+      "A10",
+      "L40S",
+      "L4",
+      "RTX 4090",
+      "RTX 3090",
+      "A6000",
+      "H200"
+    ],
+    "license": "MIT - cite as: Alpha One Index. GPU Cloud Price Index (GCPI). https://github.com/alpha-one-index/ai-infra-index"
+  },
+  "latest_composite_index": 94.9,
+  "latest_summary": {
+    "date": "2026-03-12",
+    "gpu_medians": {
+      "H100 SXM": 2.4575,
+      "A100 SXM": 1.2,
+      "A10": 0.65,
+      "L40S": 0.865,
+      "L4": 0.44,
+      "RTX 4090": 0.35,
+      "RTX 3090": 0.19,
+      "H200": 3.3
+    },
+    "cheapest_per_gpu": {
+      "H100 SXM": {
+        "provider": "Azure",
+        "price": 1.395
+      },
+      "A100 SXM": {
+        "provider": "Azure",
+        "price": 0.68
+      },
+      "A10": {
+        "provider": "Azure",
+        "price": 0.64
+      },
+      "L40S": {
+        "provider": "Fluidstack",
+        "price": 0.59
+      },
+      "L4": {
+        "provider": "RunPod",
+        "price": 0.44
+      },
+      "RTX 4090": {
+        "provider": "RunPod",
+        "price": 0.34
+      },
+      "RTX 3090": {
+        "provider": "Vast.ai",
+        "price": 0.16
+      },
+      "H200": {
+        "provider": "Vast.ai",
+        "price": 2.27
+      }
+    }
+  },
+  "provider_competitiveness": {
+    "Azure": {
+      "competitive_wins": 3,
+      "gpus_offered": 3,
+      "competitiveness_pct": 100.0
+    },
+    "Vast.ai": {
+      "competitive_wins": 2,
+      "gpus_offered": 6,
+      "competitiveness_pct": 33.3
+    },
+    "RunPod": {
+      "competitive_wins": 2,
+      "gpus_offered": 6,
+      "competitiveness_pct": 33.3
+    },
+    "Cudo Compute": {
+      "competitive_wins": 1,
+      "gpus_offered": 3,
+      "competitiveness_pct": 33.3
+    },
+    "Fluidstack": {
+      "competitive_wins": 1,
+      "gpus_offered": 3,
+      "competitiveness_pct": 33.3
+    },
+    "CoreWeave": {
+      "competitive_wins": 0,
+      "gpus_offered": 4,
+      "competitiveness_pct": 0.0
+    },
+    "Together AI": {
+      "competitive_wins": 0,
+      "gpus_offered": 3,
+      "competitiveness_pct": 0.0
+    },
+    "Vultr": {
+      "competitive_wins": 0,
+      "gpus_offered": 3,
+      "competitiveness_pct": 0.0
+    },
+    "Nebius": {
+      "competitive_wins": 0,
+      "gpus_offered": 1,
+      "competitiveness_pct": 0.0
+    },
+    "OCI": {
+      "competitive_wins": 0,
+      "gpus_offered": 4,
+      "competitiveness_pct": 0.0
+    },
+    "Paperspace": {
+      "competitive_wins": 0,
+      "gpus_offered": 2,
+      "competitiveness_pct": 0.0
+    }
+  },
+  "price_movers": {
+    "biggest_drops": [
+      {
+        "gpu": "A10",
+        "change_pct": -38.1,
+        "old": 1.05,
+        "new": 0.65
+      },
+      {
+        "gpu": "A100 SXM",
+        "change_pct": -11.11,
+        "old": 1.35,
+        "new": 1.2
+      },
+      {
+        "gpu": "H200",
+        "change_pct": -3.51,
+        "old": 3.42,
+        "new": 3.3
+      }
+    ],
+    "biggest_increases": [
+      {
+        "gpu": "L40S",
+        "change_pct": 13.07,
+        "old": 0.765,
+        "new": 0.865
+      },
+      {
+        "gpu": "RTX 4090",
+        "change_pct": 2.94,
+        "old": 0.34,
+        "new": 0.35
+      },
+      {
+        "gpu": "RTX 3090",
+        "change_pct": 2.7,
+        "old": 0.185,
+        "new": 0.19
+      }
+    ]
+  },
+  "time_series": [
+    {
+      "date": "2026-03-01",
+      "composite_index": 100.0,
+      "gpu_index": {
+        "H100 SXM": 100.0,
+        "A100 SXM": 100.0,
+        "A10": 100.0,
+        "L40S": 100.0,
+        "RTX 4090": 100.0,
+        "RTX 3090": 100.0,
+        "H200": 100.0
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.5,
+        "A100 SXM": 1.35,
+        "A10": 1.05,
+        "L40S": 0.765,
+        "RTX 4090": 0.34,
+        "RTX 3090": 0.185,
+        "H200": 3.42
+      },
+      "num_gpus_tracked": 7,
+      "num_skus": 40
+    },
+    {
+      "date": "2026-03-02",
+      "composite_index": 100.0,
+      "gpu_index": {
+        "H100 SXM": 100.0,
+        "A100 SXM": 100.0,
+        "A10": 100.0,
+        "L40S": 100.0,
+        "RTX 4090": 100.0,
+        "RTX 3090": 100.0,
+        "H200": 100.0
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.5,
+        "A100 SXM": 1.35,
+        "A10": 1.05,
+        "L40S": 0.765,
+        "RTX 4090": 0.34,
+        "RTX 3090": 0.185,
+        "H200": 3.42
+      },
+      "num_gpus_tracked": 7,
+      "num_skus": 40
+    },
+    {
+      "date": "2026-03-03",
+      "composite_index": 100.0,
+      "gpu_index": {
+        "H100 SXM": 100.0,
+        "A100 SXM": 100.0,
+        "A10": 100.0,
+        "L40S": 100.0,
+        "RTX 4090": 100.0,
+        "RTX 3090": 100.0,
+        "H200": 100.0
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.5,
+        "A100 SXM": 1.35,
+        "A10": 1.05,
+        "L40S": 0.765,
+        "RTX 4090": 0.34,
+        "RTX 3090": 0.185,
+        "H200": 3.42
+      },
+      "num_gpus_tracked": 7,
+      "num_skus": 40
+    },
+    {
+      "date": "2026-03-04",
+      "composite_index": 100.0,
+      "gpu_index": {
+        "H100 SXM": 100.0,
+        "A100 SXM": 100.0,
+        "A10": 100.0,
+        "L40S": 100.0,
+        "RTX 4090": 100.0,
+        "RTX 3090": 100.0,
+        "H200": 100.0
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.5,
+        "A100 SXM": 1.35,
+        "A10": 1.05,
+        "L40S": 0.765,
+        "RTX 4090": 0.34,
+        "RTX 3090": 0.185,
+        "H200": 3.42
+      },
+      "num_gpus_tracked": 7,
+      "num_skus": 40
+    },
+    {
+      "date": "2026-03-05",
+      "composite_index": 100.0,
+      "gpu_index": {
+        "H100 SXM": 100.0,
+        "A100 SXM": 100.0,
+        "A10": 100.0,
+        "L40S": 100.0,
+        "RTX 4090": 100.0,
+        "RTX 3090": 100.0,
+        "H200": 100.0
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.5,
+        "A100 SXM": 1.35,
+        "A10": 1.05,
+        "L40S": 0.765,
+        "RTX 4090": 0.34,
+        "RTX 3090": 0.185,
+        "H200": 3.42
+      },
+      "num_gpus_tracked": 7,
+      "num_skus": 40
+    },
+    {
+      "date": "2026-03-06",
+      "composite_index": 100.0,
+      "gpu_index": {
+        "H100 SXM": 100.0,
+        "A100 SXM": 100.0,
+        "A10": 100.0,
+        "L40S": 100.0,
+        "RTX 4090": 100.0,
+        "RTX 3090": 100.0,
+        "H200": 100.0
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.5,
+        "A100 SXM": 1.35,
+        "A10": 1.05,
+        "L40S": 0.765,
+        "RTX 4090": 0.34,
+        "RTX 3090": 0.185,
+        "H200": 3.42
+      },
+      "num_gpus_tracked": 7,
+      "num_skus": 40
+    },
+    {
+      "date": "2026-03-07",
+      "composite_index": 92.95,
+      "gpu_index": {
+        "H100 SXM": 99.6,
+        "A100 SXM": 89.63,
+        "A10": 61.43,
+        "L40S": 100.0,
+        "RTX 4090": 100.0,
+        "RTX 3090": 100.0,
+        "H200": 100.0
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.49,
+        "A100 SXM": 1.21,
+        "A10": 0.645,
+        "L40S": 0.765,
+        "RTX 4090": 0.34,
+        "RTX 3090": 0.185,
+        "H200": 3.42
+      },
+      "num_gpus_tracked": 7,
+      "num_skus": 49
+    },
+    {
+      "date": "2026-03-08",
+      "composite_index": 94.9,
+      "gpu_index": {
+        "H100 SXM": 98.3,
+        "A100 SXM": 88.89,
+        "A10": 61.9,
+        "L40S": 113.07,
+        "RTX 4090": 102.94,
+        "RTX 3090": 102.7,
+        "H200": 96.49
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.4575,
+        "A100 SXM": 1.2,
+        "A10": 0.65,
+        "L40S": 0.865,
+        "L4": 0.44,
+        "RTX 4090": 0.35,
+        "RTX 3090": 0.19,
+        "H200": 3.3
+      },
+      "num_gpus_tracked": 8,
+      "num_skus": 44
+    },
+    {
+      "date": "2026-03-09",
+      "composite_index": 94.13,
+      "gpu_index": {
+        "H100 SXM": 98.3,
+        "A100 SXM": 88.89,
+        "A10": 61.9,
+        "L40S": 113.07,
+        "RTX 4090": 102.94,
+        "RTX 3090": 97.3,
+        "H200": 96.49
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.4575,
+        "A100 SXM": 1.2,
+        "A10": 0.65,
+        "L40S": 0.865,
+        "L4": 0.44,
+        "RTX 4090": 0.35,
+        "RTX 3090": 0.18,
+        "H200": 3.3
+      },
+      "num_gpus_tracked": 8,
+      "num_skus": 44
+    },
+    {
+      "date": "2026-03-10",
+      "composite_index": 94.9,
+      "gpu_index": {
+        "H100 SXM": 98.3,
+        "A100 SXM": 88.89,
+        "A10": 61.9,
+        "L40S": 113.07,
+        "RTX 4090": 102.94,
+        "RTX 3090": 102.7,
+        "H200": 96.49
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.4575,
+        "A100 SXM": 1.2,
+        "A10": 0.65,
+        "L40S": 0.865,
+        "L4": 0.44,
+        "RTX 4090": 0.35,
+        "RTX 3090": 0.19,
+        "H200": 3.3
+      },
+      "num_gpus_tracked": 8,
+      "num_skus": 44
+    },
+    {
+      "date": "2026-03-11",
+      "composite_index": 94.13,
+      "gpu_index": {
+        "H100 SXM": 98.3,
+        "A100 SXM": 88.89,
+        "A10": 61.9,
+        "L40S": 113.07,
+        "RTX 4090": 102.94,
+        "RTX 3090": 97.3,
+        "H200": 96.49
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.4575,
+        "A100 SXM": 1.2,
+        "A10": 0.65,
+        "L40S": 0.865,
+        "L4": 0.44,
+        "RTX 4090": 0.35,
+        "RTX 3090": 0.18,
+        "H200": 3.3
+      },
+      "num_gpus_tracked": 8,
+      "num_skus": 44
+    },
+    {
+      "date": "2026-03-12",
+      "composite_index": 94.9,
+      "gpu_index": {
+        "H100 SXM": 98.3,
+        "A100 SXM": 88.89,
+        "A10": 61.9,
+        "L40S": 113.07,
+        "RTX 4090": 102.94,
+        "RTX 3090": 102.7,
+        "H200": 96.49
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.4575,
+        "A100 SXM": 1.2,
+        "A10": 0.65,
+        "L40S": 0.865,
+        "L4": 0.44,
+        "RTX 4090": 0.35,
+        "RTX 3090": 0.19,
+        "H200": 3.3
+      },
+      "num_gpus_tracked": 8,
+      "num_skus": 44
+    }
+  ]
+}
