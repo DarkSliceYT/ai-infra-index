@@ -2,7 +2,7 @@ name: Update GPU Pricing Data
 
 on:
   schedule:
-      - cron: '0 * * * *'  # Runs every hour
+    - cron: '0 * * * *'  # Runs every hour
   workflow_dispatch:
 
 permissions:
@@ -100,7 +100,7 @@ jobs:
           "
         continue-on-error: true
 
-              - name: Generate GPU Price Index (GCPI)
+      - name: Generate GPU Price Index (GCPI)
         run: python scripts/generate_price_index.py
         continue-on-error: true
 
