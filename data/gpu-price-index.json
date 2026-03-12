@@ -3,7 +3,7 @@
     "name": "GPU Cloud Price Index (GCPI)",
     "description": "Proprietary price index tracking cloud GPU costs across providers over time. Base index = 100 on first tracking date.",
     "version": "1.0.0",
-    "generated": "2026-03-12T09:00:58Z",
+    "generated": "2026-03-12T09:10:15Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "methodology": "Median per-GPU-hour price across all providers and regions, normalized to base date index of 100",
@@ -25,17 +25,17 @@
     ],
     "license": "MIT - cite as: Alpha One Index. GPU Cloud Price Index (GCPI). https://github.com/alpha-one-index/ai-infra-index"
   },
-  "latest_composite_index": 93.74,
+  "latest_composite_index": 96.65,
   "latest_summary": {
     "date": "2026-03-12",
     "gpu_medians": {
       "H100 SXM": 2.4575,
       "A100 SXM": 1.2,
       "A10": 0.65,
-      "L40S": 0.865,
+      "L40S": 1.0,
       "L4": 0.44,
       "RTX 4090": 0.35,
-      "RTX 3090": 0.175,
+      "RTX 3090": 0.18,
       "H200": 3.3
     },
     "cheapest_per_gpu": {
@@ -65,7 +65,7 @@
       },
       "RTX 3090": {
         "provider": "Vast.ai",
-        "price": 0.13
+        "price": 0.14
       },
       "H200": {
         "provider": "Vast.ai",
@@ -80,9 +80,9 @@
       "competitiveness_pct": 100.0
     },
     "Vast.ai": {
-      "competitive_wins": 3,
+      "competitive_wins": 4,
       "gpus_offered": 6,
-      "competitiveness_pct": 50.0
+      "competitiveness_pct": 66.7
     },
     "RunPod": {
       "competitive_wins": 2,
@@ -145,18 +145,18 @@
         "new": 1.2
       },
       {
-        "gpu": "RTX 3090",
-        "change_pct": -5.41,
-        "old": 0.185,
-        "new": 0.175
+        "gpu": "H200",
+        "change_pct": -3.51,
+        "old": 3.42,
+        "new": 3.3
       }
     ],
     "biggest_increases": [
       {
         "gpu": "L40S",
-        "change_pct": 13.07,
+        "change_pct": 30.72,
         "old": 0.765,
-        "new": 0.865
+        "new": 1.0
       },
       {
         "gpu": "RTX 4090",
@@ -443,24 +443,24 @@
     },
     {
       "date": "2026-03-12",
-      "composite_index": 93.74,
+      "composite_index": 96.65,
       "gpu_index": {
         "H100 SXM": 98.3,
         "A100 SXM": 88.89,
         "A10": 61.9,
-        "L40S": 113.07,
+        "L40S": 130.72,
         "RTX 4090": 102.94,
-        "RTX 3090": 94.59,
+        "RTX 3090": 97.3,
         "H200": 96.49
       },
       "gpu_medians": {
         "H100 SXM": 2.4575,
         "A100 SXM": 1.2,
         "A10": 0.65,
-        "L40S": 0.865,
+        "L40S": 1.0,
         "L4": 0.44,
         "RTX 4090": 0.35,
-        "RTX 3090": 0.175,
+        "RTX 3090": 0.18,
         "H200": 3.3
       },
       "num_gpus_tracked": 8,
